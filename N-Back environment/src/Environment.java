@@ -5,30 +5,90 @@
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
-public class Environment extends JPanel {
-	Color color;
+public class Environment extends JFrame {
+
+	JLabel num;
+	JButton button;
+	JTextField tf;
+	Timer timer;
+
+	final int NUMBER_OF_TRIALS = 10;
+
+	// Convas canvas;
+
 	public Environment() {
-		this.color = Color.black;
+
+		setLayout(new GridLayout(2, 2, 5, 5));
+
+		button = new JButton("Start");
+		add(button);
+
+		tf = new JTextField();
+		add(tf);
+
+		add(new Convas());
+
+		setSize(900, 600);
+
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		event e = new event();
+		button.addActionListener(e);
 	}
 
-	public void paintComponent(Graphics g) {
-		int width = getWidth();
-		int height = getHeight();
-		g.setColor(Color.black);
-		g.drawOval(0, 0, width, height);
-		g.drawString("3", 200,200);
+	public class event implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+
+			// ActionListener tc = new ActionListener() {
+			// public void actionPerformed(ActionEvent tca) {
+			// //counter--;
+			// System.out.println("test");
+			// // if( counter >=1) {
+			// // num.setText(""+counter);
+			// // }else{
+			// // timer.stop();
+			// // num.setText("DONE");
+			// // Toolkit.getDefaultToolkit().beep();
+			// // }
+			//
+			// }
+			// };
+			TimeClass tc = new TimeClass();
+			timer = new Timer(1000, tc);
+			timer.start();
+			System.out.println("ended");
+
+		}
+
+	}
+
+	public class TimeClass implements ActionListener {
+		int counter = NUMBER_OF_TRIALS;
+
+		public TimeClass() {
+
+		}
+
+		public void actionPerformed(ActionEvent tc) {
+			counter--;
+			
+			if (counter >= 1) {
+				tf.setText("" + counter);
+			} else {
+				timer.stop();
+				tf.setText("DONE");
+				Toolkit.getDefaultToolkit().beep();
+			}
+		}
+
 	}
 
 	public static void main(String args[]) {
-		JFrame frame = new JFrame("Oval Sample");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		frame.add(new Environment());
-		frame.setSize(900, 600);
-		frame.setVisible(true);
-		
+		Environment environment = new Environment();
 	}
 }
