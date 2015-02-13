@@ -17,8 +17,6 @@ public class Environment extends JFrame {
 
 	final int NUMBER_OF_TRIALS = 10;
 
-	// Convas canvas;
-
 	public Environment() {
 
 		setLayout(new GridLayout(2, 2, 5, 5));
@@ -43,21 +41,6 @@ public class Environment extends JFrame {
 	public class event implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-
-			// ActionListener tc = new ActionListener() {
-			// public void actionPerformed(ActionEvent tca) {
-			// //counter--;
-			// System.out.println("test");
-			// // if( counter >=1) {
-			// // num.setText(""+counter);
-			// // }else{
-			// // timer.stop();
-			// // num.setText("DONE");
-			// // Toolkit.getDefaultToolkit().beep();
-			// // }
-			//
-			// }
-			// };
 			TimeClass tc = new TimeClass();
 			timer = new Timer(1000, tc);
 			timer.start();
