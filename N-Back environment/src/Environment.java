@@ -19,11 +19,14 @@ public class Environment extends JFrame {
 
 	Random random;
 
+	final int NUMBER_OF_SESSIONS = 2;
 	final int NUMBER_OF_TRIALS = 10;
 	final int TIME_BETWEEN_STIMULUS = 2500; // Time in millisecond
 	final int TIME_FOR_STIMULUS_APPERANCE = 1000;
 	int counter;
+	
 
+	
 	public Environment() {
 
 		setLayout(new GridLayout(3, 3, 5, 5));
@@ -33,7 +36,7 @@ public class Environment extends JFrame {
 		button = new JButton("Start");
 		button.setPreferredSize(new Dimension(200, 50));
 		button.setBackground(Color.red);
-		//button.setOpaque(true);
+		// button.setOpaque(true);
 		buttonPanel.add(button, BorderLayout.NORTH);
 		add(buttonPanel);
 
@@ -42,7 +45,7 @@ public class Environment extends JFrame {
 		add(new Convas());
 
 		num = new JLabel();
-		num.setFont(new Font("Serif", Font.PLAIN, 150));
+		num.setFont(new Font("Serif", Font.PLAIN, 100));
 		num.setHorizontalAlignment(SwingConstants.CENTER);
 		num.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
 		add(num);
@@ -70,6 +73,7 @@ public class Environment extends JFrame {
 
 		public void actionPerformed(ActionEvent e) {
 
+			button.setText("STOP");
 			counter = NUMBER_OF_TRIALS;
 			num.setText("START");
 			Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
