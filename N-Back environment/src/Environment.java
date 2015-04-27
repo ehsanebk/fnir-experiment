@@ -14,7 +14,10 @@ public class Environment extends JFrame {
 	JLabel num;
 	JButton button;
 	JTextField tf;
-	Timer timer;
+	Timer timerFirstBlock_blank;
+	Timer timerFirstBlock_0back;
+	Timer timerFirstBlock_1back;
+	Timer timerFirstBlock_2back;
 	JPanel buttonPanel;
 
 	Random random;
@@ -25,7 +28,22 @@ public class Environment extends JFrame {
 	final int TIME_FOR_STIMULUS_APPERANCE = 1000;
 	int counter;
 	
-
+	int[] fristBlock_Blank = {0,4,3,7,5,9,8,1,2,6};
+	int[] fristBlock_0Back = {8,7,4,5,2,3,1,9,6,0};
+	int[] fristBlock_1Back = {4,7,0,9,5,3,6,2,1,8};
+	int[] fristBlock_2Back = {1,6,7,0,3,9,4,5,2,8};
+	
+	int[] secondBlock_Blank = {3,5,8,1,9,6,0,4,2,7};
+	int[] secondBlock_0Back = {7,3,6,4,0,5,8,1,9,2};
+	int[] secondBlock_1Back = {6,5,7,0,1,2,9,8,3,4};
+	int[] secondBlock_2Back = {9,0,1,7,3,2,6,8,4,5};
+	
+	int[] thirdBlock_Blank = {9,5,1,7,8,3,4,6,0,2};
+	int[] thirdBlock_0Back = {2,5,3,4,8,0,7,1,9,6};
+	int[] thirdBlock_1Back = {9,2,5,3,7,8,1,6,0,4};
+	int[] thirdBlock_2Back = {7,6,0,2,1,3,5,9,4,8};
+	
+	
 	
 	public Environment() {
 
@@ -63,10 +81,17 @@ public class Environment extends JFrame {
 		event e = new event();
 		button.addActionListener(e);
 
-		TimeClass tc = new TimeClass();
-		timer = new Timer(TIME_BETWEEN_STIMULUS, tc);
+		TimeZero tc0 = new TimeZero();
+		TimeFirst tc1 = new TimeFirst();
+		TimeSecond tc2 = new TimeSecond();
+		TimeThird tc3 = new TimeThird();
+		timerFirstBlock_blank = new Timer(TIME_BETWEEN_STIMULUS, tc0);
+		timerFirstBlock_0back = new Timer(TIME_BETWEEN_STIMULUS, tc1);
+		timerFirstBlock_1back = new Timer(TIME_BETWEEN_STIMULUS, tc2);
+		timerFirstBlock_2back = new Timer(TIME_BETWEEN_STIMULUS, tc3);
+		
 
-		random = new Random();
+		//random = new Random();
 	}
 
 	public class event implements ActionListener {
@@ -74,7 +99,7 @@ public class Environment extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 
 			button.setText("STOP");
-			counter = NUMBER_OF_TRIALS;
+			counter = 0;
 			num.setText("START");
 			Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
 					new ActionListener() {
@@ -85,23 +110,32 @@ public class Environment extends JFrame {
 					});
 			stimulusTimer.setRepeats(false); // Only execute once
 			stimulusTimer.start();
-			timer.start();
+			timerFirstBlock_blank.start();
+			
+			timerFirstBlock_0back.setInitialDelay(35000);
+			timerFirstBlock_0back.start();
+
+			timerFirstBlock_1back.setInitialDelay(70000);
+			timerFirstBlock_1back.start();
+
+			timerFirstBlock_2back.setInitialDelay(105000);
+			timerFirstBlock_2back.start();
 
 		}
 
 	}
 
-	public class TimeClass implements ActionListener {
+	public class TimeZero implements ActionListener {
 
-		public TimeClass() {
+		public TimeZero() {
 
 		}
 
-		public void actionPerformed(ActionEvent tc) {
-			counter--;
+		public void actionPerformed(ActionEvent tc0) {
+			counter++;
 
-			if (counter >= 1) {
-				num.setText("" + randomInteger(1, 10, random));
+			if (counter <10) {
+				num.setText("" + fristBlock_Blank[counter]);
 				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
 						new ActionListener() {
 							@Override
@@ -112,7 +146,7 @@ public class Environment extends JFrame {
 				stimulusTimer.setRepeats(false); // Only execute once
 				stimulusTimer.start();
 			} else {
-				timer.stop();
+				timerFirstBlock_blank.stop();
 				num.setText("DONE");
 				Toolkit.getDefaultToolkit().beep();
 			}
@@ -120,7 +154,91 @@ public class Environment extends JFrame {
 
 	}
 
-	// returns a random int between start and end
+	public class TimeFirst implements ActionListener {
+
+		public TimeFirst() {
+
+		}
+
+		public void actionPerformed(ActionEvent tc1) {
+			counter++;
+
+			if (counter <20) {
+				num.setText("" + fristBlock_0Back[counter%10]);
+				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
+						new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent arg0) {
+								num.setText("");
+							}
+						});
+				stimulusTimer.setRepeats(false); // Only execute once
+				stimulusTimer.start();
+			} else {
+				timerFirstBlock_0back.stop();
+				num.setText("DONE");
+				Toolkit.getDefaultToolkit().beep();
+			}
+		}
+
+	}
+	public class TimeSecond implements ActionListener {
+
+		public TimeSecond() {
+
+		}
+
+		public void actionPerformed(ActionEvent tc2) {
+			counter++;
+
+			if (counter <30) {
+				num.setText("" + fristBlock_1Back[counter%10]);
+				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
+						new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent arg0) {
+								num.setText("");
+							}
+						});
+				stimulusTimer.setRepeats(false); // Only execute once
+				stimulusTimer.start();
+			} else {
+				timerFirstBlock_1back.stop();
+				num.setText("DONE");
+				Toolkit.getDefaultToolkit().beep();
+			}
+		}
+
+	}
+	
+	public class TimeThird implements ActionListener {
+
+		public TimeThird() {
+
+		}
+
+		public void actionPerformed(ActionEvent tc3) {
+			counter++;
+
+			if (counter <40) {
+				num.setText("" + fristBlock_2Back[counter%10]);
+				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
+						new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent arg0) {
+								num.setText("");
+							}
+						});
+				stimulusTimer.setRepeats(false); // Only execute once
+				stimulusTimer.start();
+			} else {
+				timerFirstBlock_1back.stop();
+				num.setText("DONE");
+				Toolkit.getDefaultToolkit().beep();
+			}
+		}
+
+	}
 	private static int randomInteger(int Start, int End, Random aRandom) {
 		if (Start > End) {
 			throw new IllegalArgumentException("Start cannot exceed End.");
