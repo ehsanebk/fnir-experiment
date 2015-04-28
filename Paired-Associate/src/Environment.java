@@ -103,7 +103,7 @@ public class Environment extends JFrame {
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						num.setText("test");
+						num.setText("<html> var1 <br/> var2 </html>");
 					}
 				});
 		stimulusTimer.setRepeats(false); // Only execute once
