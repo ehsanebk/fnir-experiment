@@ -10,43 +10,47 @@ import javax.swing.*;
 
 import java.util.Random;
 
-public class Environment extends JFrame {
+
+public class Environment extends JFrame implements KeyListener{
 
 	JLabel num;
 	JButton button;
 	JTextField tf;
-	Timer timerFirstBlock_blank;
-	Timer timerFirstBlock_0back;
-	Timer timerFirstBlock_1back;
-	Timer timerFirstBlock_2back;
+
 	JPanel buttonPanel;
+
+
 
 	Random random;
 
+	public static int timer =0; // the actual timing in the experiment
+	public static int stimuliTime =0;
+	
+	
 	final int NUMBER_OF_SESSIONS = 2;
 	final int NUMBER_OF_TRIALS = 10;
 	final int TIME_BETWEEN_STIMULUS = 2500; // Time in millisecond
 	final int TIME_FOR_STIMULUS_APPERANCE = 1000;
 	int counter;
-	
-	int[] fristBlock_Blank = {0,4,3,7,5,9,8,1,2,6};
-	int[] fristBlock_0Back = {8,7,4,5,2,3,1,9,6,0};
-	int[] fristBlock_1Back = {4,7,0,9,5,3,6,2,1,8};
-	int[] fristBlock_2Back = {1,6,7,0,3,9,4,5,2,8};
-	
-	int[] secondBlock_Blank = {3,5,8,1,9,6,0,4,2,7};
-	int[] secondBlock_0Back = {7,3,6,4,0,5,8,1,9,2};
-	int[] secondBlock_1Back = {6,5,7,0,1,2,9,8,3,4};
-	int[] secondBlock_2Back = {9,0,1,7,3,2,6,8,4,5};
-	
-	int[] thirdBlock_Blank = {9,5,1,7,8,3,4,6,0,2};
-	int[] thirdBlock_0Back = {2,5,3,4,8,0,7,1,9,6};
-	int[] thirdBlock_1Back = {9,2,5,3,7,8,1,6,0,4};
-	int[] thirdBlock_2Back = {7,6,0,2,1,3,5,9,4,8};
-	
-	
-	
+
+	String[] n_Back  = {"COW","FUN","ACT","KEY","PEN","ZOO","CAR","LEG","CAT"
+			,"DOG","FAT","GUN", "WAR", "ANT", "SUN","MAN"};
+
+	String[][] study_no = { {"band", "2"} , {"drop", "1"} , {"agra", "3"},
+			{"worm", "4"},{"quit", "1"},{"lake", "5"}};
+	String[][] study_short = {{"band", "2"} , {"drop", "1"} , {"agra", "3"},
+			{"worm", "4"},{"quit", "1"},{"lake", "5"}};
+	String[][] study_long = {{"band", "2"} , {"drop", "1"} , {"agra", "3"},
+			{"worm", "4"},{"quit", "1"},{"lake", "5"}};
+	String[][] study_filler = {{"band", "2"} , {"drop", "1"} , {"agra", "3"},
+			{"worm", "4"},{"quit", "1"},{"lake", "5"}};
+
+
 	public Environment() {
+
+		addKeyListener(this);
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
 
 		setLayout(new GridLayout(3, 3, 5, 5));
 
@@ -64,9 +68,9 @@ public class Environment extends JFrame {
 		add(new Convas());
 
 		num = new JLabel();
-		num.setFont(new Font("Serif", Font.PLAIN, 100));
+		num.setFont(new Font("Serif", Font.PLAIN, 80));
 		num.setHorizontalAlignment(SwingConstants.CENTER);
-		num.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		num.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		add(num);
 
 		add(new Convas());
@@ -81,185 +85,96 @@ public class Environment extends JFrame {
 
 		event e = new event();
 		button.addActionListener(e);
-		
-		
 
-		TimeZero tc0 = new TimeZero();
-		TimeFirst tc1 = new TimeFirst();
-		TimeSecond tc2 = new TimeSecond();
-		TimeThird tc3 = new TimeThird();
-		timerFirstBlock_blank = new Timer(TIME_BETWEEN_STIMULUS, tc0);
-		timerFirstBlock_0back = new Timer(TIME_BETWEEN_STIMULUS, tc1);
-		timerFirstBlock_1back = new Timer(TIME_BETWEEN_STIMULUS, tc2);
-		timerFirstBlock_2back = new Timer(TIME_BETWEEN_STIMULUS, tc3);
-		
 
-		//random = new Random();
+
+		random = new Random();
 	}
-	
-	public void stimulusAtTime(int t,final String s){
-		
-		Timer stimulusTimer = new Timer(t,
-				new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						num.setText("<html> var1 <br/> var2 </html>");
-					}
-				});
-		stimulusTimer.setRepeats(false); // Only execute once
-		stimulusTimer.start();
-		
-	}
-	
-	
+
+
 	public class event implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			stimulusAtTime(0, "eeee");
-			button.setText("STOP");
-			counter = 0;
-			num.setText("START");
-			Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
-					new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent arg0) {
-							num.setText("");
-						}
-					});
-			stimulusTimer.setRepeats(false); // Only execute once
-			stimulusTimer.start();
+
+
+			button.setVisible(false);
+			stimuliTime=0;
+
 			
-			stimulusAtTime(0, "eeee");
-			
-			timerFirstBlock_blank.start();
-			
-			timerFirstBlock_0back.setInitialDelay(35000);
-			timerFirstBlock_0back.start();
+			Timer t = new Timer(500, new ActionListener(){      // Timer 1 seconds
+	            public void actionPerformed(ActionEvent e) {
+	               timer+=500;
+	               //System.out.println(timer);
+	            }
+	        });
+			t.start();
 
-			timerFirstBlock_1back.setInitialDelay(70000);
-			timerFirstBlock_1back.start();
 
-			timerFirstBlock_2back.setInitialDelay(105000);
-			timerFirstBlock_2back.start();
+			for (int i = 0; i < study_no.length; i++) {
 
-		}
+				// Trial i at time 
 
-	}
-
-	public class TimeZero implements ActionListener {
-
-		public TimeZero() {
-
-		}
-
-		public void actionPerformed(ActionEvent tc0) {
-			counter++;
-
-			if (counter <10) {
-				num.setText("" + fristBlock_Blank[counter]);
-				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
-						new ActionListener() {
-							@Override
-							public void actionPerformed(ActionEvent arg0) {
-								num.setText("");
-							}
-						});
-				stimulusTimer.setRepeats(false); // Only execute once
-				stimulusTimer.start();
-			} else {
-				timerFirstBlock_blank.stop();
-				num.setText("DONE");
-				Toolkit.getDefaultToolkit().beep();
+				stimulusAtTime(stimuliTime,"<html>"+"*"+"</html>");
+				stimulusAtTime(stimuliTime+=2000,"<html>"+study_no[i][0]+"<br/><center> - </center>"+
+						"<br/> <center>"+study_no[i][1]+"</center></html>");
+				stimulusAtTime(stimuliTime+=8000,"<html>"+"+"+"</html>");
+				stimulusAtTime(stimuliTime+=10000,"<html>"+study_no[i][0]+"</html>");
+				stimulusAtTime(stimuliTime+=16000,"<html>"+study_no[i][1]+"</html>");
+				stimulusAtTime(stimuliTime+=18000,"<html>"+"*"+"</html>");
+				distractorAtTime(stimuliTime += 20000 );
 			}
+
+
 		}
 
 	}
 
-	public class TimeFirst implements ActionListener {
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode())+"time="+ timer);
 
-		public TimeFirst() {
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
 
-		}
+	}
 
-		public void actionPerformed(ActionEvent tc1) {
-			counter++;
+	@Override
+	public void keyTyped(KeyEvent e) {
+		System.out.println("keyTyped="+KeyEvent.getKeyText(e.getKeyCode()));
 
-			if (counter <20) {
-				num.setText("" + fristBlock_0Back[counter%10]);
-				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
-						new ActionListener() {
-							@Override
-							public void actionPerformed(ActionEvent arg0) {
-								num.setText("");
-							}
-						});
-				stimulusTimer.setRepeats(false); // Only execute once
-				stimulusTimer.start();
-			} else {
-				timerFirstBlock_0back.stop();
-				num.setText("DONE");
-				Toolkit.getDefaultToolkit().beep();
+	}
+
+	// set the text to s on the screen at time t in the experiment 
+	public void stimulusAtTime(int t,final String s){
+
+		Timer stimulusTimer = new Timer(t,
+				new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				num.setText(s);
 			}
-		}
+		});
+		stimulusTimer.setRepeats(false); // Only execute once
+		stimulusTimer.start();
 
 	}
-	public class TimeSecond implements ActionListener {
 
-		public TimeSecond() {
+	// the distractor : 1-Back task for 10 sec and it will update the timing (time)
+	public void distractorAtTime(int t) {
 
-		}
+		for (int i = 0; i < 10; i++) {
+			stimulusAtTime(t,n_Back[randomInteger(1, 10, random)]);
+			t+= 1000;
+		} 
+		stimuliTime =t; // updating the global time
 
-		public void actionPerformed(ActionEvent tc2) {
-			counter++;
-
-			if (counter <30) {
-				num.setText("" + fristBlock_1Back[counter%10]);
-				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
-						new ActionListener() {
-							@Override
-							public void actionPerformed(ActionEvent arg0) {
-								num.setText("");
-							}
-						});
-				stimulusTimer.setRepeats(false); // Only execute once
-				stimulusTimer.start();
-			} else {
-				timerFirstBlock_1back.stop();
-				num.setText("DONE");
-				Toolkit.getDefaultToolkit().beep();
-			}
-		}
 
 	}
+
+
 	
-	public class TimeThird implements ActionListener {
-
-		public TimeThird() {
-
-		}
-
-		public void actionPerformed(ActionEvent tc3) {
-			counter++;
-
-			if (counter <40) {
-				num.setText("" + fristBlock_2Back[counter%10]);
-				Timer stimulusTimer = new Timer(TIME_FOR_STIMULUS_APPERANCE,
-						new ActionListener() {
-							@Override
-							public void actionPerformed(ActionEvent arg0) {
-								num.setText("");
-							}
-						});
-				stimulusTimer.setRepeats(false); // Only execute once
-				stimulusTimer.start();
-			} else {
-				timerFirstBlock_1back.stop();
-				num.setText("DONE");
-				Toolkit.getDefaultToolkit().beep();
-			}
-		}
-
-	}
 	private static int randomInteger(int Start, int End, Random aRandom) {
 		if (Start > End) {
 			throw new IllegalArgumentException("Start cannot exceed End.");
@@ -275,5 +190,9 @@ public class Environment extends JFrame {
 	public static void main(String args[]) {
 		Environment environment = new Environment();
 		environment.setExtendedState(Frame.MAXIMIZED_BOTH);
+
+
 	}
+
+
 }
