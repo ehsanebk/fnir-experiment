@@ -36,7 +36,7 @@ public class generatingWords {
 		
 		Collections.shuffle(words, new Random());
 		
-		for (int i = 0; i < 175; i++) {
+		for (int i = 0; i < 200; i++) {
 			System.out.println(words.get(i)+ " "+
 					randomInteger(1,4 , rand));
 		}

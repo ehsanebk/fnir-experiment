@@ -1,14 +1,2 @@
-keyPressed=D--time=500
-keyPressed=F--time=500
-keyReleased=D--time=500
-keyPressed=G--time=500
-keyReleased=F--time=500
-keyReleased=G--time=500
-keyPressed=S--time=500
-keyPressed=D--time=500
-keyPressed=F--time=500
-keyReleased=S--time=500
-keyReleased=D--time=500
-keyPressed=G--time=500
-keyReleased=F--time=1000
-keyReleased=G--time=1000
+keyPressed=?--time=30500
+keyReleased=?--time=30500
