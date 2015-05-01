@@ -31,62 +31,122 @@ public class Environment extends JFrame implements KeyListener{
 	public static int timer =0; // the actual timing in the experiment
 	public static int stimuliTime =0;
 
-	final int NUMBER_OF_SESSIONS = 2;
-	final int NUMBER_OF_TRIALS = 10;
-	final int TIME_BETWEEN_STIMULUS = 2500; // Time in millisecond
-	final int TIME_FOR_STIMULUS_APPERANCE = 1000;
 	int counter;
+
+	Timer time;
 
 	List<String> n_Back  = Arrays.asList("COW","FUN","ACT","KEY","PEN","ZOO","CAR","LEG","CAT"
 			,"DOG","FAT","GUN", "WAR", "ANT", "SUN","MAN");
 
-	String[][] paired={
-			// study            probe and feedback
-			{"KAMI", "1"},		{"KAMI", "1"},  // 0 	trial delay  --1
-			{"PATS", "1"},		{"EGOS", "3"},  // foil 1 trial delay  --2
-			{"GAST", "3"},		{"KAMI", "1"},	// 2 	trial delay  --3
-			{"RASP", "1"},		{"GAST", "3"},  // 1 --4
-			{"SLID", "3"},		{"SLID", "3"},  // 0 --5
-			{"MILK", "1"},		{"RASP", "1"},  // 2 --6
-			{"SAWN", "3"},		{"SAWN", "3"},	// 0 --7
-			{"SLUR", "3"},		{"MILK", "1"},  // 2 --8
-			{"ZITS", "2"},		{"PATS", "1"},	// 7 --9
-			{"BUSK", "3"},		{"SLUR", "3"},  // 2 --10
-			//////////////////////////////////
-			{"NUKE", "2"},		{"ZITS", "2"},	// 2 --11
-			{"TAGS", "4"},		{"GIES", "3"},  // foil 2 --12
-			{"DOSE", "3"},		{"NUKE", "2"},  // 2 --13
-			{"VILE", "2"},      {"VIGA", "1"},	// foils 3 --14
-			{"DIET", "3"},		{"DIET", "3"},  // 0 --15
-			{"KEEF", "1"},		{"VILE", "2"},  // 2 --16
-			{"SCAT", "4"},		{"BUSK", "3"},  // 7 --17
-			{"AVOS", "3"},		{"YUCA", "3"},  // foil 4 --18
-			{"OHED", "1"},		{"TAGS", "4"},  // 7 --19
-			{"CRAW", "1"},		{"AVOS", "3"},  // 2 --20
-			{"FYKE", "4"},		{"FYKE", "4"},	// 0 --21
-			{"PICK", "2"},		{"KEEF", "1"},  // 6 --22
-			{"PATH", "2"},		{"TEFF", "3"},  // foil 5 --23
-			{"CATS", "4"},		{"CATS", "4"},  // 0 -- 24
-			{"HASP", "1"},		{"OHED", "1"},  // 7 -- 25
-	 		{"PADI", "1"},		{"PADI", "1"},  // 0 -- 26
-			{"TACT", "4"},		{"MIXT", "1"},  // foil 6 -- 27
-			{"HEST", "3"},		{"HEST", "3"},  // 0 -- 28
-			{"ROUP", "3"},		{"PATH", "2"},  // 6 -- 29
-			{"CHAD", "1"},		{"ROUP", "3"},  // 1 -- 30
-			//////////////////////////////////
-			{"EGOS", "3"},				// foils 1
-			{"GIES", "3"},				// foils 2
-			{"VIGA", "1"},				// foils 3	
-			{"YUCA", "3"},				// foils 4
-			{"TEFF", "3"},				// foils 5
-			{"MIXT", "1"},				// foils 6
-			{"OLDY", "2"},				// foils 7
-			{"BEER", "4"},				// foils 8
-			{"TEDS", "4"},				// foils 9
-			{"BLAM", "2"}};				// foils 10
+	String[][] study={
+			// study            
+			{"time", "1"},		//  **TRIAL  1**
+			{"year", "1"},		//  **TRIAL  2**
+			{"work", "3"},		//  **TRIAL  3**
+			{"life", "1"},		//  **TRIAL  4**
+			{"case", "3"},		//  **TRIAL  5**
+			{"part", "1"},		//  **TRIAL  6**
+			{"area", "3"},		//  **TRIAL  7**
+			{"hand", "3"},		//  **TRIAL  8**
+			{"week", "2"},		//  **TRIAL  9**
+			{"word", "3"},		//  **TRIAL 10**
+			{"fact", "2"},		//  **TRIAL 11**
+			{"head", "4"},		//  **TRIAL 12**
+			{"side", "3"},		//  **TRIAL 13**
+			{"home", "2"},      //  **TRIAL 14**
+			{"book", "3"},		//  **TRIAL 15**
+			{"form", "1"},		//  **TRIAL 16**
+			{"room", "4"},		//  **TRIAL 17**
+			{"idea", "3"},		//  **TRIAL 18**
+			{"name", "1"},		//  **TRIAL 19**
+			{"body", "1"},		//  **TRIAL 20**
+			{"line", "4"},		//  **TRIAL 21**
+			{"face", "2"},		//  **TRIAL 22**
+			{"road", "2"},		//  **TRIAL 23**
+			{"rate", "4"},		//  **TRIAL 24**
+			{"door", "1"},		//  **TRIAL 25**
+	 		{"hour", "1"},		//  **TRIAL 26**
+			{"view", "4"},		//  **TRIAL 27**
+			{"term", "3"},		//  **TRIAL 28**
+			{"city", "3"},		//  **TRIAL 29**
+			{"need", "1"},		//  **TRIAL 30**
+			{"kind", "3"},				// foils 1
+			{"cost", "3"},				// foils 2
+			{"type", "1"},				// foils 3	
+			{"girl", "3"},				// foils 4
+			{"mind", "3"},				// foils 5
+			{"bank", "1"},				// foils 6
+			{"sort", "2"},				// foils 7
+			{"team", "4"},				// foils 8
+			{"town", "4"},				// foils 9
+			{"plan", "2"}};				// foils 10
 
-
+	String[][] probe_feedback ={
+			//probe and feedback
+			{"time", "1"},	   //  **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+			{"kind", "3"},	   //  **TRIAL  2** study:year-1 probe:kind feedback:3 (foil)
+			{"time", "1"},	   //  **TRIAL  3** study:work-3 probe:time feedback:1 (2 trial delay)
+			{"work", "3"},	   //  **TRIAL  4** study:life-1 probe:work feedback:3 (1 trial delay)
+			{"case", "3"},	   //  **TRIAL  5** study:case-3 probe:case feedback:1 (0 trial delay)
+			{"life", "1"},	   //  **TRIAL  6** study:part-1 probe:life feedback:1 (2 trial delay)
+			{"area", "3"},	   //  **TRIAL  7** study:area-3 probe:area feedback:3 (0 trial delay)
+			{"part", "1"},	   //  **TRIAL  8** study:hand-3 probe:part feedback:1 (2 trial delay)
+			{"year", "1"},	   //  **TRIAL  9** study:week-2 probe:year feedback:1 (7 trial delay)
+			{"hand", "3"},	   //  **TRIAL 10** study:word-3 probe:hand feedback:3 (2 trial delay)
+			{"week", "2"},	   //  **TRIAL 11** study:fact-2 probe:week feedback:2 (2 trial delay)
+			{"cost", "3"},	   //  **TRIAL 12** study:head-4 probe:cost feedback:3 (foil)
+			{"fact", "2"},	   //  **TRIAL 13** study:side-3 probe:fact feedback:2 (2 trial delay)
+			{"type", "1"},	   //  **TRIAL 14** study:home-2 probe:time feedback:1 (foil)
+			{"book", "3"},	   //  **TRIAL 15** study:book-3 probe:book feedback:3 (0 trial delay)
+			{"home", "2"},	   //  **TRIAL 16** study:form-1 probe:home feedback:2 (2 trial delay)
+			{"word", "3"},	   //  **TRIAL 17** study:room-4 probe:word feedback:3 (7 trial delay)
+			{"girl", "3"},	   //  **TRIAL 18** study:idea-3 probe:girl feedback:3 (foil)
+			{"head", "4"},	   //  **TRIAL 19** study:name-1 probe:head feedback:4 (7 trial delay)
+			{"name", "3"},	   //  **TRIAL 20** study:body-1 probe:name feedback:3 (1 trial delay)
+			{"line", "4"},	   //  **TRIAL 21** study:line-4 probe:line feedback:4 (0 trial delay)
+			{"form", "1"},	   //  **TRIAL 22** study:face-2 probe:form feedback:1 (6 trial delay)
+			{"mind", "3"},	   //  **TRIAL 23** study:road-2 probe:mind feedback:3 (foil)
+			{"rate", "4"},	   //  **TRIAL 24** study:rate-4 probe:rate feedback:4 (0 trial delay)
+			{"idea", "1"},	   //  **TRIAL 25** study:door-1 probe:idea feedback:1 (7 trial delay)
+			{"hour", "1"},	   //  **TRIAL 26** study:hour-1 probe:hour feedback:1 (0 trial delay)
+			{"bank", "1"},	   //  **TRIAL 27** study:view-4 probe:bank feedback:1 (foil)
+			{"term", "3"},	   //  **TRIAL 28** study:term-3 probe:term feedback:3 (0 trial delay)
+			{"road", "2"},	   //  **TRIAL 29** study:city-3 probe:road feedback:2 (6 trial delay)
+			{"city", "3"}};    //  **TRIAL 30** study:need-1 probe:city feedback:3 (1 trial delay)
 	
+	String [] info ={
+			"**TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)" ,
+			"**TRIAL  2** study:year-1 probe:kind feedback:3 (foil)",
+			"**TRIAL  3** study:work-3 probe:time feedback:1 (2 trial delay)",
+			"**TRIAL  4** study:life-1 probe:work feedback:3 (1 trial delay)",
+			"**TRIAL  5** study:case-3 probe:case feedback:1 (0 trial delay)",
+			"**TRIAL  6** study:part-1 probe:life feedback:1 (2 trial delay)",
+			"**TRIAL  7** study:area-3 probe:area feedback:3 (0 trial delay)",
+			"**TRIAL  8** study:hand-3 probe:part feedback:1 (2 trial delay)",
+			"**TRIAL  9** study:week-2 probe:year feedback:1 (7 trial delay)",
+			"**TRIAL 10** study:word-3 probe:hand feedback:3 (2 trial delay)",
+			"**TRIAL 11** study:fact-2 probe:week feedback:2 (2 trial delay)",
+			"**TRIAL 12** study:head-4 probe:cost feedback:3 (foil)",
+			"**TRIAL 13** study:side-3 probe:fact feedback:2 (2 trial delay)",
+			"**TRIAL 14** study:home-2 probe:time feedback:1 (foil)",
+			"**TRIAL 15** study:book-3 probe:book feedback:3 (0 trial delay)",
+			"**TRIAL 16** study:form-1 probe:home feedback:2 (2 trial delay)",
+			"**TRIAL 17** study:room-4 probe:word feedback:3 (7 trial delay)",
+			"**TRIAL 18** study:idea-3 probe:girl feedback:3 (foil)",
+			"**TRIAL 19** study:name-1 probe:head feedback:4 (7 trial delay)",
+			"**TRIAL 20** study:body-1 probe:name feedback:3 (1 trial delay)",
+			"**TRIAL 21** study:line-4 probe:line feedback:4 (0 trial delay)",
+			"**TRIAL 22** study:face-2 probe:form feedback:1 (6 trial delay)",
+			"**TRIAL 23** study:road-2 probe:mind feedback:3 (foil)",
+			"**TRIAL 24** study:rate-4 probe:rate feedback:4 (0 trial delay)",
+			"**TRIAL 25** study:door-1 probe:idea feedback:1 (7 trial delay)",
+			"**TRIAL 26** study:hour-1 probe:hour feedback:1 (0 trial delay)",
+			"**TRIAL 27** study:view-4 probe:bank feedback:1 (foil)",
+			"**TRIAL 28** study:term-3 probe:term feedback:3 (0 trial delay)",
+			"**TRIAL 29** study:city-3 probe:road feedback:2 (6 trial delay)",
+			"**TRIAL 30** study:need-1 probe:city feedback:3 (1 trial delay)"
+	};
+
 	// writing to a file for each participant
 	String fileName = "./test.txt";
 	boolean append_to_file  = false;
@@ -96,6 +156,21 @@ public class Environment extends JFrame implements KeyListener{
 
 	public Environment() {
 
+		GraphicsDevice gd =
+	            GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+
+	    if (gd.isFullScreenSupported()) {
+	        setUndecorated(true);
+	        gd.setFullScreenWindow(this);
+	        setExtendedState(Frame.MAXIMIZED_BOTH);
+			setUndecorated(true);
+	    } else {
+	        System.err.println("Full screen not supported");
+	        setExtendedState(Frame.MAXIMIZED_BOTH);
+			setUndecorated(true);
+	    }
+
+	    
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
@@ -139,7 +214,6 @@ public class Environment extends JFrame implements KeyListener{
 		try {
 			write = new FileWriter(fileName, append_to_file);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		print_line = new PrintWriter(write);
@@ -152,24 +226,25 @@ public class Environment extends JFrame implements KeyListener{
 			button.setVisible(false);
 			stimuliTime=0;
 
-			Timer t = new Timer(500, new ActionListener(){      // Timer 1 seconds
+			time = new Timer(500, new ActionListener(){      // Timer 1 seconds
 				public void actionPerformed(ActionEvent e) {
-					timer+=500;
+					timer+=100;
 					//System.out.println(timer);
 				}
 			});
-			t.start();
+			time.start();
 
-			for (int i = 0; i < 60; i+=2) {
+
+			for (int i = 0; i < 30; i++) {
 
 				// Trial i at time 
 
-				stimulusAtTime(stimuliTime,"<html>"+"*"+"</html>");
-				stimulusAtTime(stimuliTime+2000,"<html>"+paired[i][0]+"<br/><center> - </center>"+
-						"<br/> <center>"+paired[i][1]+"</center></html>");
-				stimulusAtTime(stimuliTime+8000,"<html>"+"+"+"</html>");
-				stimulusAtTime(stimuliTime+10000,"<html>"+paired[i+1][0]+"</html>");
-				stimulusAtTime(stimuliTime+16000,"<html>"+paired[i+1][1]+"</html>");
+				stimulusAtTime(stimuliTime,"<html>"+"*"+"</html>", "*");
+				stimulusAtTime(stimuliTime+2000,"<html>"+study[i][0]+"<br/><center> - </center>"+
+						"<br/> <center>"+study[i][1]+"</center></html>", info[i] );
+				stimulusAtTime(stimuliTime+8000,"<html>"+ "+" +"</html>", "+");
+				stimulusAtTime(stimuliTime+10000,"<html>"+probe_feedback[i][0]+"</html>","Probe = "+probe_feedback[i][0] );
+				stimulusAtTime(stimuliTime+16000,"<html>"+probe_feedback[i][1]+"</html>","Feed Back = "+probe_feedback[i][1]);
 				//stimulusAtTime(stimuliTime+18000,"<html>"+"*"+"</html>");
 				distractorAtTime(stimuliTime + 18000 );
 			}
@@ -178,33 +253,38 @@ public class Environment extends JFrame implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		print_line.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
+		print_line.println(timer + " "+ "*key Pressed* ="+KeyEvent.getKeyText(e.getKeyCode()));
 		print_line.flush();
-		System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
+		System.out.println(timer + " "+ "*key Pressed* ="+KeyEvent.getKeyText(e.getKeyCode()));
 
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		print_line.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
-		print_line.flush();
-		System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
+		//print_line.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
+		//print_line.flush();
+		//System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
 
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("keyTyped="+KeyEvent.getKeyText(e.getKeyCode()));
+		//System.out.println("keyTyped="+KeyEvent.getKeyText(e.getKeyCode()));
 
 	}
 
-	// set the text to s on the screen at time t in the experiment 
-	public void stimulusAtTime(int t,final String s){
+
+	// set the text to s on the screen at time t in the experiment and write it to text file
+	public void stimulusAtTime(int t,final String s, final String info){
 
 		Timer stimulusTimer = new Timer(t,
 				new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				num.setText(s);
+				if (info.length() >0){
+					print_line.println(timer + " " + info);
+					print_line.flush();
+				}
 			}
 		});
 		stimulusTimer.setRepeats(false); // Only execute once
@@ -212,13 +292,16 @@ public class Environment extends JFrame implements KeyListener{
 
 	}
 
+
 	// the distractor : 1-Back task for 10 sec and it will update the timing (time)
 	public void distractorAtTime(int t) {
 		Collections.shuffle(n_Back);
 
+		String stimulus=""; 
 		for (int i = 0; i < 10; i++) {
-			stimulusAtTime(t,n_Back.get(randomInteger(1, 10, random)));
-			stimulusAtTime(t+1000,"");
+			stimulus = n_Back.get(randomInteger(1, 10, random));
+			stimulusAtTime(t,stimulus, "N-Back :" + stimulus);
+			stimulusAtTime(t+1000,"","");
 			t+= 1200;
 		} 
 		stimuliTime =t; // updating the global time
@@ -242,9 +325,9 @@ public class Environment extends JFrame implements KeyListener{
 
 	public static void main(String args[]) {
 		Environment environment = new Environment();
-		environment.setExtendedState(Frame.MAXIMIZED_BOTH);
-
-
+//		environment.setExtendedState(Frame.MAXIMIZED_BOTH);
+//		environment.setUndecorated(true);
+		
 	}
 
 
