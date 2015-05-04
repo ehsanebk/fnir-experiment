@@ -30,6 +30,10 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 	Random random;
 	public static int timer =0; // the actual timing in the experiment
 	public static int stimuliTime =0;
+	KeyListener respond_to_probe;
+	
+	
+	boolean key;
 
 	int counter;
 
@@ -233,28 +237,28 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 			button.setVisible(false);
 			stimuliTime=0;
 
-			time = new Timer(500, new ActionListener(){      // Timer 1 seconds
+			time = new Timer(10, new ActionListener(){      // Timer 1 seconds
 				public void actionPerformed(ActionEvent e) {
-					timer+=100;
-					//System.out.println(timer);
+					timer+=10;
+					
 				}
 			});
 			time.start();
 
 
-			for (int i = 0; i < 30; i++) {
+			//for (int i = 0; i < 30; i++) {
 
 				// Trial i at time 
 
-				stimulusAtTime(stimuliTime,"<html>"+"*"+"</html>", "*");
-				stimulusAtTime(stimuliTime+2000,"<html>"+study[i][0]+"<br/><center> - </center>"+
-						"<br/> <center>"+study[i][1]+"</center></html>", info[i] );
-				stimulusAtTime(stimuliTime+8000,"<html>"+ "+" +"</html>", "+");
-				stimulusAtTime(stimuliTime+10000,"<html>"+probe_feedback[i][0]+"</html>","Probe = "+probe_feedback[i][0] );
-				stimulusAtTime(stimuliTime+16000,"<html>"+probe_feedback[i][1]+"</html>","Feed Back = "+probe_feedback[i][1]);
-				//stimulusAtTime(stimuliTime+18000,"<html>"+"*"+"</html>");
-				distractorAtTime(stimuliTime + 18000 );
-			}
+				stimulusAtTime_fixation(stimuliTime,"<html>"+"*"+"</html>", "*");
+//				stimulusAtTime(stimuliTime+2000,"<html>"+study[i][0]+"<br/><center> - </center>"+
+//						"<br/> <center>"+study[i][1]+"</center></html>", info[i] );
+//				stimulusAtTime(stimuliTime+8000,"<html>"+ "+" +"</html>", "+");
+//				stimulusAtTime(stimuliTime+10000,"<html>"+probe_feedback[i][0]+"</html>","Probe = "+probe_feedback[i][0] );
+//				stimulusAtTime(stimuliTime+16000,"<html>"+probe_feedback[i][1]+"</html>","Feed Back = "+probe_feedback[i][1]);
+//				//stimulusAtTime(stimuliTime+18000,"<html>"+"*"+"</html>");
+//				distractorAtTime(stimuliTime + 18000 );
+			//}
 		}
 	}
 
@@ -286,16 +290,16 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 
 
 	// set the text to s on the screen at time t in the experiment and write it to text file
-	public void stimulusAtTime(int t,final String s, final String info){
+	public void stimulusAtTime(int t,final String s, final String information){
 
-		Timer stimulusTimer = new Timer(t,
-				new ActionListener() {
+		Timer stimulusTimer = new Timer(t, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				num.setText(s);
-				if (info.length() >0){
-					print_line.println(timer + " " + info);
+				if (information.length() >0){
+					print_line.println(timer + " " + information);
 					print_line.flush();
+					
 				}
 			}
 		});
@@ -304,7 +308,127 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 
 	}
 
+	public void stimulusAtTime_fixation(int t,final String s, final String information){
 
+		Timer stimulusTimer = new Timer(t, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				num.setText(s);
+				if (information.length() >0){
+					print_line.println(timer + " " + information);
+					print_line.flush();
+					
+				}
+				stimulusAtTime_study(2000,"<html>"+study[0][0]+"<br/><center> - </center>"+
+						"<br/> <center>"+study[0][1]+"</center></html>", info[0] );
+			}
+		});
+		stimulusTimer.setRepeats(false); // Only execute once
+		stimulusTimer.start();
+
+	}
+
+	public void stimulusAtTime_study(int t,final String s, final String information){
+
+		Timer stimulusTimer = new Timer(t, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				num.setText(s);
+				if (information.length() >0){
+					print_line.println(timer + " " + information);
+					print_line.flush();
+				}
+
+				stimulusAtTime_warning(6000,"<html>"+ "+" +"</html>", "+");
+			}
+		});
+		stimulusTimer.setRepeats(false); // Only execute once
+		stimulusTimer.start();
+
+	}
+	
+	public void stimulusAtTime_warning(int t,final String s, final String information){
+
+		Timer stimulusTimer = new Timer(t, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				num.setText(s);
+				if (information.length() >0){
+					print_line.println(timer + " " + information);
+					print_line.flush();
+				}
+				stimulusAtTime_probe(2000,"<html>"+probe_feedback[0][0]+"</html>","Probe = "+probe_feedback[0][0] );
+			}
+		});
+		stimulusTimer.setRepeats(false); // Only execute once
+		stimulusTimer.start();
+
+	}
+	public void stimulusAtTime_probe(int t,final String s, final String information){
+
+		key =false;
+		Timer stimulusTimer = new Timer(t, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				num.setText(s);
+
+				if (information.length() >0){
+					print_line.println(timer + " " + information);
+					print_line.flush();
+				}
+
+				respond_to_probe = new KeyListener() {
+					public void keyPressed(KeyEvent e) { }
+
+					public void keyReleased(KeyEvent e) { 
+						stimulusAtTime(0,"","");
+						stimulusAtTime_feedback(100,"<html>"+probe_feedback[0][1]+"</html>","Feed Back = "+probe_feedback[0][1]);
+						System.out.println("tttttt");
+						key =true;
+					}
+
+					public void keyTyped(KeyEvent e) { }
+				};
+				addKeyListener(respond_to_probe);
+
+				Timer checkAfter6sec = new Timer(6000, new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						if (key == false){
+							stimulusAtTime(0,"","");
+							stimulusAtTime_feedback(100,"<html>"+probe_feedback[0][1]+"</html>","Feed Back = "+probe_feedback[0][1]);
+						}
+
+					}
+				});
+				checkAfter6sec.setRepeats(false); // Only execute once
+				checkAfter6sec.start();
+			}
+		});
+		stimulusTimer.setRepeats(false); // Only execute once
+		stimulusTimer.start();
+
+	}
+	
+	public void stimulusAtTime_feedback(int t,final String s, final String information){
+
+		removeKeyListener(respond_to_probe);
+		Timer stimulusTimer = new Timer(t, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				num.setText(s);
+				if (information.length() >0){
+					print_line.println(timer + " " + information);
+					print_line.flush();
+				}
+				distractorAtTime(2000);
+			}
+		});
+		stimulusTimer.setRepeats(false); // Only execute once
+		stimulusTimer.start();
+
+	}
+	
 	// the distractor : 1-Back task for 10 sec and it will update the timing (time)
 	public void distractorAtTime(int t) {
 		Collections.shuffle(n_Back);
@@ -316,7 +440,9 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 			stimulusAtTime(t+1000,"","");
 			t+= 1200;
 		} 
+		
 		stimuliTime =t; // updating the global time
+		stimulusAtTime_fixation(t+10000,"<html>"+"*"+"</html>", "*");
 
 
 	}
