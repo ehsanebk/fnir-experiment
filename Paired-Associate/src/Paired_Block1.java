@@ -21,7 +21,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 
-public class Environment extends JFrame implements KeyListener{
+public class Paired_Block1 extends JFrame implements KeyListener{
 
 	JLabel num;
 	JButton button;
@@ -154,22 +154,29 @@ public class Environment extends JFrame implements KeyListener{
 	PrintWriter print_line; 
 
 
-	public Environment() {
+	public Paired_Block1() {
 
+		
+		
+		
+		if (!isDisplayable()) {
+		    // Can only do this when the frame is not visible
+			setUndecorated(true);
+		}
+		
 		GraphicsDevice gd =
 	            GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-
 	    if (gd.isFullScreenSupported()) {
-	        setUndecorated(true);
+	        //setUndecorated(true);
 	        gd.setFullScreenWindow(this);
-	        setExtendedState(Frame.MAXIMIZED_BOTH);
-			setUndecorated(true);
+	       
 	    } else {
 	        System.err.println("Full screen not supported");
 	        setExtendedState(Frame.MAXIMIZED_BOTH);
 			setUndecorated(true);
 	    }
 
+		
 	    
 		addKeyListener(this);
 		setFocusable(true);
@@ -191,7 +198,7 @@ public class Environment extends JFrame implements KeyListener{
 		add(new Convas());
 
 		num = new JLabel();
-		num.setFont(new Font("Serif", Font.PLAIN, 80));
+		num.setFont(new Font("Serif", Font.PLAIN, 60));
 		num.setHorizontalAlignment(SwingConstants.CENTER);
 		num.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		add(num);
@@ -257,6 +264,7 @@ public class Environment extends JFrame implements KeyListener{
 		print_line.flush();
 		System.out.println(timer + " "+ "*key Pressed* ="+KeyEvent.getKeyText(e.getKeyCode()));
 
+		
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -264,6 +272,10 @@ public class Environment extends JFrame implements KeyListener{
 		//print_line.flush();
 		//System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
 
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
+			System.exit(0);
+		}
+			
 	}
 
 	@Override
@@ -324,10 +336,9 @@ public class Environment extends JFrame implements KeyListener{
 	}
 
 	public static void main(String args[]) {
-		Environment environment = new Environment();
-//		environment.setExtendedState(Frame.MAXIMIZED_BOTH);
-//		environment.setUndecorated(true);
-		
+		Paired_Block1 environment = new Paired_Block1();
+		environment.setExtendedState(Frame.MAXIMIZED_BOTH);
+
 	}
 
 
