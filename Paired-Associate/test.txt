@@ -1,19 +1,28 @@
 0 *
-1890 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
-7550 +
-9430 Probe = time
-10770 *key Pressed* =F
-10930 Feed Back = 1
-12820 N-Back :LEG
-13940 N-Back :CAT
-15060 N-Back :LEG
-16170 N-Back :CAR
-17300 N-Back :PEN
-18420 N-Back :GUN
-19560 N-Back :GUN
-20690 N-Back :ZOO
-21820 N-Back :CAR
-22960 N-Back :LEG
-36250 *
-38110 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
-42030 *key Pressed* =?
+1880 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+7470 +
+9340 Probe = time
+15050 Feed Back = 1
+16930 N-Back :FAT
+18040 N-Back :CAT
+19160 N-Back :FAT
+20270 N-Back :MAN
+21400 N-Back :ACT
+22510 N-Back :MAN
+23640 N-Back :MAN
+24220 *key Pressed* =?
+24750 N-Back :FAT
+25880 N-Back :SUN
+27000 N-Back :ZOO
+28120 *
+29990 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+35620 +
+37490 Probe = time
+38740 *key Pressed* =N
+38930 Feed Back = 1
+40800 N-Back :CAR
+41920 N-Back :CAT
+43030 N-Back :FUN
+44150 N-Back :COW
+45270 N-Back :MAN
+45580 *key Pressed* =?
