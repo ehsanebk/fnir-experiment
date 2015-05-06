@@ -1,0 +1,11 @@
+1063 *
+3076 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+9080 Study --> +
+15085 Probe = time
+16299 *key Pressed* =1
+16499 Feed Back = 1
+18500 N-Back :COW
+19701 N-Back :ACT
+20900 N-Back :COW
+22101 N-Back :ACT
+22394 *key Pressed* =?

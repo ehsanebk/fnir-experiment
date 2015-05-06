@@ -1,75 +1,512 @@
-930 *
-2810 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
-8420 Study --> +
-10290 Probe = time
-15990 Feed Back = 1
-17860 N-Back :DOG
-18980 N-Back :PEN
-20110 N-Back :ZOO
-21230 N-Back :LEG
-22360 N-Back :MAN
-23480 N-Back :ZOO
-24600 N-Back :SUN
-25710 N-Back :DOG
-26560 *key Pressed* =H
-26700 *key Pressed* =S
-26840 N-Back :DOG
-26980 *key Pressed* =H
-27030 *key Pressed* =S
-27300 *key Pressed* =F
-27960 N-Back :LEG
-29090 Fixation --> *
-30970 **TRIAL  2** study:year-1 probe:kind feedback:3 (foil)
-36570 Study --> +
-38450 Probe = kind
-44150 Feed Back = 3
-46040 N-Back :FUN
-47160 N-Back :SUN
-48290 N-Back :SUN
-49420 N-Back :CAR
-50550 N-Back :FUN
-51660 N-Back :GUN
-52790 N-Back :CAR
-53910 N-Back :CAT
-55030 N-Back :COW
-56170 N-Back :FAT
-57290 Fixation --> *
-59180 **TRIAL  3** study:work-3 probe:time feedback:1 (2 trial delay)
-64790 Study --> +
-66680 Probe = time
-72370 Feed Back = 1
-74260 N-Back :GUN
-75390 N-Back :PEN
-76510 N-Back :MAN
-77640 N-Back :GUN
-78770 N-Back :CAR
-79900 N-Back :ANT
-81020 N-Back :COW
-82140 N-Back :CAR
-83250 N-Back :CAT
-84380 N-Back :PEN
-85500 Fixation --> *
-87390 **TRIAL  4** study:life-1 probe:work feedback:3 (1 trial delay)
-93000 Study --> +
-94880 Probe = work
-100570 Feed Back = 3
-102450 N-Back :CAR
-103570 N-Back :CAR
-104690 N-Back :SUN
-105810 N-Back :ZOO
-106930 N-Back :DOG
-108050 N-Back :WAR
-109170 N-Back :WAR
-110290 N-Back :WAR
-111410 N-Back :PEN
-112550 N-Back :WAR
-113670 Fixation --> *
-115550 **TRIAL  5** study:case-3 probe:case feedback:1 (0 trial delay)
-121180 Study --> +
-123050 Probe = case
-128760 Feed Back = 3
-130630 N-Back :ANT
-131770 N-Back :PEN
-132910 N-Back :CAR
-134040 N-Back :CAR
-135170 N-Back :CAR
+920 *
+2800 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+8400 Study --> +
+10260 Probe = time
+11060 *key Pressed* =J
+11250 Feed Back = 1
+13100 N-Back :COW
+14220 N-Back :FAT
+15340 N-Back :ACT
+16460 N-Back :FAT
+17580 N-Back :GUN
+18690 N-Back :FAT
+19820 N-Back :CAT
+20920 N-Back :ACT
+22020 N-Back :SUN
+23150 N-Back :SUN
+23750 *key Pressed* =?
+24270 Fixation --> *
+26130 **TRIAL  2** study:year-1 probe:kind feedback:3 (foil)
+31690 Study --> +
+33550 Probe = kind
+35530 *key Pressed* =?
+35730 Feed Back = 3
+37570 N-Back :CAT
+38700 N-Back :KEY
+39820 N-Back :GUN
+40940 N-Back :GUN
+42060 N-Back :FAT
+43180 N-Back :PEN
+44290 N-Back :MAN
+45410 N-Back :KEY
+46530 N-Back :ZOO
+47640 N-Back :CAT
+48750 Fixation --> *
+50620 **TRIAL  3** study:work-3 probe:time feedback:1 (2 trial delay)
+56200 Study --> +
+58060 Probe = time
+59050 *key Pressed* =J
+59220 Feed Back = 1
+61090 N-Back :ACT
+62200 N-Back :DOG
+63330 N-Back :SUN
+64440 N-Back :SUN
+64920 *key Pressed* =?
+65560 N-Back :FUN
+66670 N-Back :KEY
+67790 N-Back :ZOO
+68910 N-Back :KEY
+70020 N-Back :KEY
+70670 *key Pressed* =?
+71120 N-Back :ACT
+72230 Fixation --> *
+74100 **TRIAL  4** study:life-1 probe:work feedback:3 (1 trial delay)
+79710 Study --> +
+81590 Probe = work
+82440 *key Pressed* =L
+82670 Feed Back = 3
+84530 N-Back :ACT
+85660 N-Back :WAR
+86770 N-Back :CAR
+87890 N-Back :CAR
+88550 *key Pressed* =?
+89010 N-Back :MAN
+90130 N-Back :DOG
+91250 N-Back :LEG
+92370 N-Back :DOG
+93490 N-Back :LEG
+94600 N-Back :CAT
+95690 Fixation --> *
+97540 **TRIAL  5** study:case-3 probe:case feedback:1 (0 trial delay)
+103110 Study --> +
+104990 Probe = case
+106260 *key Pressed* =L
+106480 Feed Back = 3
+108330 N-Back :GUN
+109450 N-Back :FUN
+110570 N-Back :FAT
+111690 N-Back :ANT
+112810 N-Back :DOG
+113930 N-Back :MAN
+115040 N-Back :GUN
+116170 N-Back :ANT
+117280 N-Back :CAR
+118390 N-Back :LEG
+119500 Fixation --> *
+121360 **TRIAL  6** study:part-1 probe:life feedback:1 (2 trial delay)
+126940 Study --> +
+128820 Probe = life
+130330 *key Pressed* =J
+130570 Feed Back = 1
+132430 N-Back :FUN
+133550 N-Back :CAR
+134660 N-Back :CAR
+135350 *key Pressed* =?
+135780 N-Back :PEN
+136900 N-Back :FUN
+138020 N-Back :ACT
+139130 N-Back :PEN
+140250 N-Back :ZOO
+141370 N-Back :PEN
+142490 N-Back :COW
+143600 Fixation --> *
+145460 **TRIAL  7** study:area-3 probe:area feedback:3 (0 trial delay)
+151040 Study --> +
+152910 Probe = area
+153920 *key Pressed* =L
+154120 Feed Back = 3
+155990 N-Back :FAT
+157110 N-Back :KEY
+158190 N-Back :PEN
+159230 N-Back :PEN
+159860 *key Pressed* =?
+160340 N-Back :FUN
+161460 N-Back :FUN
+162150 *key Pressed* =?
+162570 N-Back :LEG
+163670 N-Back :KEY
+164800 N-Back :DOG
+165920 N-Back :KEY
+167040 Fixation --> *
+168920 **TRIAL  8** study:hand-3 probe:part feedback:1 (2 trial delay)
+174520 Study --> +
+176390 Probe = part
+178390 *key Pressed* =L
+178590 Feed Back = 1
+180450 N-Back :CAR
+181570 N-Back :CAR
+182220 *key Pressed* =?
+182690 N-Back :FUN
+183810 N-Back :COW
+184920 N-Back :LEG
+186040 N-Back :PEN
+187160 N-Back :PEN
+187760 *key Pressed* =?
+188270 N-Back :MAN
+189390 N-Back :FAT
+190500 N-Back :KEY
+191620 Fixation --> *
+193490 **TRIAL  9** study:week-2 probe:year feedback:1 (7 trial delay)
+199090 Study --> +
+200960 Probe = year
+203720 *key Pressed* =L
+203950 Feed Back = 1
+205810 N-Back :KEY
+206930 N-Back :SUN
+208040 N-Back :KEY
+209150 N-Back :ZOO
+210280 N-Back :SUN
+211400 N-Back :CAR
+212530 N-Back :LEG
+213650 N-Back :SUN
+214770 N-Back :SUN
+215880 N-Back :SUN
+216700 *key Pressed* =?
+217000 Fixation --> *
+218870 **TRIAL 10** study:word-3 probe:hand feedback:3 (2 trial delay)
+224450 Study --> +
+226310 Probe = hand
+228110 *key Pressed* =L
+228340 Feed Back = 3
+230210 N-Back :FAT
+231330 N-Back :MAN
+232450 N-Back :COW
+233570 N-Back :WAR
+234700 N-Back :ANT
+235820 N-Back :FAT
+236940 N-Back :PEN
+238050 N-Back :COW
+239170 N-Back :WAR
+240280 N-Back :COW
+241390 Fixation --> *
+243260 **TRIAL 11** study:fact-2 probe:week feedback:2 (2 trial delay)
+248840 Study --> +
+250720 Probe = week
+252450 *key Pressed* =L
+252670 Feed Back = 2
+254530 N-Back :PEN
+255640 N-Back :ZOO
+256750 N-Back :FUN
+257870 N-Back :MAN
+258990 N-Back :CAT
+260110 N-Back :KEY
+261220 N-Back :PEN
+262340 N-Back :GUN
+263450 N-Back :FUN
+264560 N-Back :MAN
+265680 Fixation --> *
+267560 **TRIAL 12** study:head-4 probe:cost feedback:3 (foil)
+273140 Study --> +
+275020 Probe = cost
+276900 *key Pressed* =K
+277130 Feed Back = 3
+279000 N-Back :DOG
+280110 N-Back :SUN
+281220 N-Back :MAN
+282330 N-Back :DOG
+283440 N-Back :SUN
+284550 N-Back :KEY
+285670 N-Back :KEY
+286500 *key Pressed* =?
+286780 N-Back :MAN
+287890 N-Back :ZOO
+289010 N-Back :WAR
+290130 Fixation --> *
+291990 **TRIAL 13** study:side-3 probe:fact feedback:2 (2 trial delay)
+297590 Study --> +
+299460 Probe = fact
+301730 *key Pressed* =K
+301940 Feed Back = 2
+303810 N-Back :FAT
+304930 N-Back :SUN
+306050 N-Back :DOG
+307170 N-Back :FAT
+308290 N-Back :ANT
+309410 N-Back :MAN
+310520 N-Back :ACT
+311620 N-Back :ANT
+312740 N-Back :GUN
+313860 N-Back :ACT
+314970 Fixation --> *
+316840 **TRIAL 14** study:home-2 probe:time feedback:1 (foil)
+322420 Study --> +
+324300 Probe = type
+326900 *key Pressed* =K
+327100 Feed Back = 1
+328970 N-Back :SUN
+330090 N-Back :GUN
+331210 N-Back :FAT
+332330 N-Back :FAT
+333420 *key Pressed* =?
+333450 N-Back :WAR
+334560 N-Back :CAT
+335680 N-Back :LEG
+336800 N-Back :FAT
+337920 N-Back :SUN
+339040 N-Back :WAR
+340160 Fixation --> *
+342020 **TRIAL 15** study:book-3 probe:book feedback:3 (0 trial delay)
+347630 Study --> +
+349500 Probe = book
+350820 *key Pressed* =L
+351000 Feed Back = 3
+352860 N-Back :LEG
+353980 N-Back :LEG
+354520 *key Pressed* =?
+355100 N-Back :LEG
+355860 *key Pressed* =?
+356210 N-Back :PEN
+357340 N-Back :KEY
+358450 N-Back :CAT
+359570 N-Back :CAT
+360590 *key Pressed* =?
+360690 N-Back :ZOO
+361810 N-Back :ANT
+362930 N-Back :COW
+364040 Fixation --> *
+365900 **TRIAL 16** study:form-1 probe:home feedback:2 (2 trial delay)
+371500 Study --> +
+373360 Probe = home
+374830 *key Pressed* =K
+375030 Feed Back = 2
+376890 N-Back :DOG
+378010 N-Back :ACT
+379130 N-Back :KEY
+380250 N-Back :COW
+381370 N-Back :CAR
+382480 N-Back :KEY
+383600 N-Back :CAR
+384710 N-Back :SUN
+385830 N-Back :COW
+386950 N-Back :ACT
+388070 Fixation --> *
+389930 **TRIAL 17** study:room-4 probe:word feedback:3 (7 trial delay)
+395510 Study --> +
+397360 Probe = word
+399870 *key Pressed* =K
+400090 Feed Back = 3
+401960 N-Back :LEG
+403080 N-Back :ZOO
+404190 N-Back :WAR
+405300 N-Back :COW
+406420 N-Back :LEG
+407520 N-Back :COW
+408640 N-Back :GUN
+409750 N-Back :FAT
+410870 N-Back :PEN
+411990 N-Back :ACT
+413100 Fixation --> *
+414980 **TRIAL 18** study:idea-3 probe:girl feedback:3 (foil)
+420590 Study --> +
+422450 Probe = girl
+425000 *key Pressed* =?
+425230 Feed Back = 3
+427090 N-Back :MAN
+428210 N-Back :DOG
+429320 N-Back :MAN
+430440 N-Back :MAN
+431440 *key Pressed* =?
+431570 N-Back :FAT
+432690 N-Back :FAT
+433190 *key Pressed* =?
+433810 N-Back :COW
+434930 N-Back :ANT
+436040 N-Back :LEG
+437160 N-Back :COW
+438280 Fixation --> *
+440140 **TRIAL 19** study:name-1 probe:head feedback:4 (7 trial delay)
+445740 Study --> +
+447600 Probe = head
+450200 *key Pressed* =L
+450400 Feed Back = 4
+452260 N-Back :GUN
+453370 N-Back :DOG
+454490 N-Back :CAR
+455620 N-Back :MAN
+456750 N-Back :CAR
+457870 N-Back :ZOO
+458990 N-Back :SUN
+460110 N-Back :CAT
+461220 N-Back :DOG
+462350 N-Back :DOG
+463150 *key Pressed* =?
+463460 Fixation --> *
+465330 **TRIAL 20** study:body-1 probe:name feedback:3 (1 trial delay)
+470930 Study --> +
+472800 Probe = name
+475370 *key Pressed* =J
+475580 Feed Back = 3
+477450 N-Back :FUN
+478570 N-Back :WAR
+479670 N-Back :MAN
+480800 N-Back :DOG
+481920 N-Back :ZOO
+483030 N-Back :CAR
+484140 N-Back :WAR
+485250 N-Back :ACT
+486370 N-Back :ZOO
+487480 N-Back :COW
+488600 Fixation --> *
+490470 **TRIAL 21** study:line-4 probe:line feedback:4 (0 trial delay)
+496050 Study --> +
+497930 Probe = line
+499350 *key Pressed* =;
+499550 Feed Back = 4
+501410 N-Back :WAR
+502530 N-Back :PEN
+503640 N-Back :SUN
+504760 N-Back :LEG
+505880 N-Back :ACT
+506990 N-Back :SUN
+508100 N-Back :DOG
+509230 N-Back :FAT
+510350 N-Back :PEN
+511460 N-Back :PEN
+512580 Fixation --> *
+514440 **TRIAL 22** study:face-2 probe:form feedback:1 (6 trial delay)
+520020 Study --> +
+521880 Probe = form
+527570 Feed Back = 1
+529440 N-Back :DOG
+530560 N-Back :MAN
+531680 N-Back :FUN
+532790 N-Back :LEG
+533900 N-Back :KEY
+535010 N-Back :DOG
+536140 N-Back :DOG
+537260 N-Back :MAN
+538380 N-Back :GUN
+539500 N-Back :KEY
+540620 Fixation --> *
+542490 **TRIAL 23** study:road-2 probe:mind feedback:3 (foil)
+548080 Study --> +
+549940 Probe = mind
+552180 *key Pressed* =?
+552390 Feed Back = 3
+554250 N-Back :FUN
+555370 N-Back :ACT
+556490 N-Back :CAT
+557620 N-Back :COW
+558740 N-Back :FAT
+559850 N-Back :MAN
+560960 N-Back :ACT
+562080 N-Back :MAN
+563180 N-Back :FAT
+564300 N-Back :ACT
+565420 Fixation --> *
+567280 **TRIAL 24** study:rate-4 probe:rate feedback:4 (0 trial delay)
+572870 Study --> +
+574730 Probe = rate
+575900 *key Pressed* =;
+576110 Feed Back = 4
+577970 N-Back :ZOO
+579090 N-Back :MAN
+580200 N-Back :ACT
+581320 N-Back :CAR
+582440 N-Back :MAN
+583560 N-Back :ACT
+584670 N-Back :ZOO
+585800 N-Back :ANT
+586910 N-Back :ZOO
+588000 N-Back :KEY
+589120 Fixation --> *
+590990 **TRIAL 25** study:door-1 probe:idea feedback:1 (7 trial delay)
+596600 Study --> +
+598460 Probe = idea
+601300 *key Pressed* =K
+601530 Feed Back = 1
+603390 N-Back :CAT
+604510 N-Back :SUN
+605620 N-Back :SUN
+606740 N-Back :LEG
+606980 *key Pressed* =?
+607860 N-Back :KEY
+608980 N-Back :ANT
+610100 N-Back :LEG
+611220 N-Back :ACT
+612350 N-Back :LEG
+613460 N-Back :CAT
+614580 Fixation --> *
+616450 **TRIAL 26** study:hour-1 probe:hour feedback:1 (0 trial delay)
+622040 Study --> +
+623910 Probe = hour
+625000 *key Pressed* =J
+625200 Feed Back = 1
+627070 N-Back :GUN
+628190 N-Back :CAR
+629310 N-Back :WAR
+630430 N-Back :ACT
+631550 N-Back :ACT
+632070 *key Pressed* =?
+632670 N-Back :DOG
+633790 N-Back :ZOO
+634910 N-Back :ZOO
+635500 *key Pressed* =?
+636020 N-Back :PEN
+637150 N-Back :CAT
+638270 Fixation --> *
+640130 **TRIAL 27** study:view-4 probe:bank feedback:1 (foil)
+645700 Study --> +
+647570 Probe = bank
+649300 *key Pressed* =?
+649520 Feed Back = 1
+651390 N-Back :DOG
+652500 N-Back :COW
+653630 N-Back :ACT
+654740 N-Back :GUN
+655840 N-Back :COW
+656970 N-Back :ANT
+658080 N-Back :LEG
+659190 N-Back :DOG
+660310 N-Back :DOG
+660830 *key Pressed* =?
+661420 N-Back :WAR
+662540 Fixation --> *
+664410 **TRIAL 28** study:term-3 probe:term feedback:3 (0 trial delay)
+670000 Study --> +
+671860 Probe = term
+673040 *key Pressed* =L
+673240 Feed Back = 3
+675100 N-Back :ANT
+676220 N-Back :CAR
+677340 N-Back :WAR
+678460 N-Back :SUN
+679580 N-Back :WAR
+680700 N-Back :SUN
+681820 N-Back :MAN
+682940 N-Back :FUN
+684060 N-Back :GUN
+685190 N-Back :FUN
+686310 Fixation --> *
+688160 **TRIAL 29** study:city-3 probe:road feedback:2 (6 trial delay)
+693730 Study --> +
+695590 Probe = road
+698820 *key Pressed* =?
+699060 Feed Back = 2
+700940 N-Back :GUN
+702060 N-Back :GUN
+703190 N-Back :ANT
+704300 N-Back :WAR
+705400 N-Back :GUN
+706510 N-Back :FAT
+707630 N-Back :CAT
+708750 N-Back :ZOO
+709870 N-Back :LEG
+710990 N-Back :GUN
+712110 Fixation --> *
+713980 **TRIAL 30** study:need-1 probe:city feedback:3 (1 trial delay)
+719530 Study --> +
+721390 Probe = city
+727090 Feed Back = 3
+728960 N-Back :WAR
+730070 N-Back :GUN
+731190 N-Back :ANT
+732310 N-Back :ANT
+733120 *key Pressed* =?
+733430 N-Back :CAT
+734550 N-Back :ANT
+735670 N-Back :SUN
+736790 N-Back :SUN
+737440 *key Pressed* =?
+737890 N-Back :LEG
+739010 N-Back :DOG
+740130 Fixation --> *
+767480 *key Pressed* =?
+767780 *key Pressed* =?
+767980 *key Pressed* =?
+768260 *key Pressed* =?
+768500 *key Pressed* =?
+768710 *key Pressed* =?
+768980 *key Pressed* =?
+769180 *key Pressed* =?
+779110 *key Pressed* =?
