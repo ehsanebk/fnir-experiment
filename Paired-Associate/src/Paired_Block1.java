@@ -448,9 +448,6 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		//print_line.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
-		//print_line.flush();
-
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
 			print_line.flush();
 			System.exit(0);
