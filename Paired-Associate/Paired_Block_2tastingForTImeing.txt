@@ -1,0 +1,21 @@
+1073 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+3086 Study --> foot-3
+9094 Warning --> +
+11102 PROBE = foot
+15599 *key Pressed* =1
+15829 Feed Back = 3
+17831 N-Back :SUN
+19030 N-Back :SUN
+20230 N-Back :WAR
+21431 N-Back :MAN
+22630 N-Back :SUN
+23830 N-Back :ACT
+24170 *key Pressed* =?
+25030 N-Back :CAT
+25578 *key Pressed* =4
+26114 *key Pressed* =3
+26231 N-Back :ACT
+26538 *key Pressed* =2
+27162 *key Pressed* =1
+27432 N-Back :COW
+28202 *key Pressed* =?
