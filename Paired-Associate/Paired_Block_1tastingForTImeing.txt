@@ -1,0 +1,57 @@
+1095 **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+3107 Study --> time-1
+9113 Warning --> +
+15121 PROBE = time
+16322 *key Pressed* =1
+16548 Feed Back = 1
+18551 N-Back :FAT
+19750 N-Back :ACT
+20951 N-Back :CAT
+22150 N-Back :ACT
+22953 *key Pressed* =?
+23351 N-Back :COW
+24550 N-Back :FUN
+25750 N-Back :LEG
+26951 N-Back :KEY
+28150 N-Back :LEG
+29350 N-Back :COW
+30555 **TRIAL  2** study:year-1 probe:kind feedback:foil (foil)
+32564 Study --> year-1
+38569 Warning --> +
+44577 PROBE = kind
+48809 *key Pressed* =?
+49028 Feed Back = foil
+51029 N-Back :COW
+52229 N-Back :GUN
+53429 N-Back :KEY
+54629 N-Back :GUN
+55831 N-Back :DOG
+57030 N-Back :LEG
+58230 N-Back :PEN
+59430 N-Back :COW
+60630 N-Back :LEG
+61830 N-Back :FAT
+63034 **TRIAL  3** study:work-3 probe:time feedback:1 (2 trial delay)
+65044 Study --> work-3
+71048 Warning --> +
+77054 PROBE = time
+79218 *key Pressed* =1
+79508 Feed Back = 1
+81509 N-Back :COW
+82709 N-Back :KEY
+83910 N-Back :GUN
+85109 N-Back :SUN
+86309 N-Back :WAR
+87510 N-Back :COW
+88709 N-Back :CAR
+89910 N-Back :KEY
+91109 N-Back :ANT
+92309 N-Back :WAR
+93513 **TRIAL  4** study:life-1 probe:work feedback:3 (1 trial delay)
+95523 Study --> life-1
+97154 *key Pressed* =?
+97546 *key Pressed* =1
+97874 *key Pressed* =3
+98170 *key Pressed* =2
+98354 *key Pressed* =1
+98634 *key Pressed* =?
