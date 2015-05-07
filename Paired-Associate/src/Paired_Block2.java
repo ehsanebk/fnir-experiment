@@ -9,9 +9,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -22,28 +20,28 @@ import java.io.PrintWriter;
 import java.io.IOException;
 
 public class Paired_Block2 extends JFrame implements KeyListener{
-
 	JLabel num;
 	JButton button;
 	JTextField tf;
 	JPanel buttonPanel;
 	Random random;
-	public static int timer = 0; // the actual timing in the experiment
 	KeyListener respond_to_probe;
 
-
+	
 	boolean key;
 	int trial_number;
-	Timer time;
 	Timer stimulusTimer;
+	long startTime;
 
 	// writing to a file for each participant
-	String fileName = "./Paired_Block_2-test1.txt";
+	String FILE_NAME = "./Paired_Block2_take1.txt";
+	static final int TIME_BETWEEN_STUDY_AND_PROBE  = 2000;  
+	
 	boolean append_to_file  = false;
 	FileWriter write; 
 	PrintWriter print_line; 
 
-	List<String> n_Back  = Arrays.asList("COW","FUN","ACT","KEY","PEN","ZOO","CAR","LEG","CAT"
+	List<String> N_BACK  = Arrays.asList("COW","FUN","ACT","KEY","PEN","ZOO","CAR","LEG","CAT"
 			,"DOG","FAT","GUN", "WAR", "ANT", "SUN","MAN");
 
 	String[][] study={
@@ -159,8 +157,6 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 
 	public Paired_Block2() {
 
-		
-		
 		if (!isDisplayable()) {
 			// Can only do this when the frame is not visible
 			setUndecorated(true);
@@ -220,18 +216,21 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 		random = new Random();
 
 		try {
-			write = new FileWriter(fileName, append_to_file);
+			write = new FileWriter(FILE_NAME, append_to_file);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		print_line = new PrintWriter(write);
 
+		/* A key handler which handle the key responses of the subject 
+		            after the probe and go forward with the experiment 
+		 */
 		respond_to_probe = new KeyListener() {
 			public void keyPressed(KeyEvent e) { }
 
 			public void keyReleased(KeyEvent e) { 
 				stimulusAtTime(0,"","");
-				stimulusAtTime_feedback(100,"<html>"+probe_feedback[trial_number][1]+"</html>","Feed Back = "+probe_feedback[trial_number][1]);
+				stimulusAtTime_feedback(100);
 				key =true;
 			}
 
@@ -244,19 +243,12 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 
 		public void actionPerformed(ActionEvent e) {
 			button.setVisible(false);
-
-			time = new Timer(10, new ActionListener(){      // Timer every 10 ms
-				public void actionPerformed(ActionEvent e) {
-					timer+=10;
-				}
-			});
-			time.start();
+			startTime = System.currentTimeMillis();
 
 			// starting the trials Trial 
-
 			trial_number = 0;
 			// starting the experiment after 1 second of clicking the strat bottom
-			stimulusAtTime_fixation(1000,"<html>"+"*"+"</html>", "*"); 
+			stimulusAtTime_fixation(1000); 
 		}
 	}
 
@@ -264,14 +256,14 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 	// set the text to s on the screen at time t after calling in the experiment and write it to text file
 	public void stimulusAtTime(int t,final String s, final String information){
 
-		Timer stimulusTimer = new Timer(t, new ActionListener() {
+		stimulusTimer = new Timer(t, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				num.setText(s);
 				if (information.length() >0){
-					print_line.println(timer + " " + information);
-					print_line.flush();
-
+					long endTime   = System.currentTimeMillis();
+					long totalTime = endTime - startTime;
+					print_line.println(totalTime + " " + information);
 				}
 			}
 		});
@@ -280,24 +272,23 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 
 	}
 
-	public void stimulusAtTime_fixation(int t,final String s, final String information){
+	public void stimulusAtTime_fixation(int t){
 
+		print_line.flush();
 		if (trial_number >=30){
 			num.setText("END");	
-			time.stop();
 		}
 		else{
-			Timer stimulusTimer = new Timer(t, new ActionListener() {
+			stimulusTimer = new Timer(t, new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					num.setText(s);
-					if (information.length() >0){
-						print_line.println(timer + " " + information);
-						print_line.flush();
+					num.setText("<html>"+"*"+"</html>");
+					// writing to file:
+					long endTime   = System.currentTimeMillis();
+					long totalTime = endTime - startTime;
+					print_line.println(totalTime + " " + "Fixation "+ info[trial_number]);
 
-					}
-					stimulusAtTime_study(2000,"<html>"+study[trial_number][0]+"<br/><center> - </center>"+
-							"<br/> <center>"+study[trial_number][1]+"</center></html>", info[trial_number] );
+					stimulusAtTime_study(2000);
 				}
 			});
 			stimulusTimer.setRepeats(false); // Only execute once
@@ -305,18 +296,20 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 		}
 	}
 
-	public void stimulusAtTime_study(int t,final String s, final String information){
+	public void stimulusAtTime_study(int t){
 
-		Timer stimulusTimer = new Timer(t, new ActionListener() {
+		stimulusTimer = new Timer(t, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				num.setText(s);
-				if (information.length() >0){
-					print_line.println(timer + " " + information);
-					print_line.flush();
-				}
+				num.setText("<html>"+study[trial_number][0]+"<br/><center> - </center>"+
+						"<br/> <center>"+study[trial_number][1]+"</center></html>");
+				// writing to file:
+				long endTime   = System.currentTimeMillis();
+				long totalTime = endTime - startTime;
+				print_line.println(totalTime + " " + "Study --> " +study[trial_number][0]+"-" +study[trial_number][1]);
 
-				stimulusAtTime_warning(6000,"<html>"+ "+" +"</html>", "Study --> +");
+
+				stimulusAtTime_warning(6000);
 			}
 		});
 		stimulusTimer.setRepeats(false); // Only execute once
@@ -324,35 +317,38 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 
 	}
 
-	public void stimulusAtTime_warning(int t,final String s, final String information){
+	public void stimulusAtTime_warning(int t){
 
-		Timer stimulusTimer = new Timer(t, new ActionListener() {
+		stimulusTimer = new Timer(t, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				num.setText(s);
-				if (information.length() >0){
-					print_line.println(timer + " " + information);
-					print_line.flush();
-				}
-				stimulusAtTime_probe(6000,"<html>"+probe_feedback[trial_number][0]+"</html>","Probe = "+probe_feedback[trial_number][0] );
+				num.setText("<html>"+ "+" +"</html>");
+
+				long endTime   = System.currentTimeMillis();
+				long totalTime = endTime - startTime;
+				print_line.println(totalTime + " " + "Warning --> +");
+
+				stimulusAtTime_probe(TIME_BETWEEN_STUDY_AND_PROBE);
 			}
 		});
 		stimulusTimer.setRepeats(false); // Only execute once
 		stimulusTimer.start();
 
 	}
-	public void stimulusAtTime_probe(int t,final String s, final String information){
+
+	public void stimulusAtTime_probe(int t){
 
 		key =false;
-		Timer stimulusTimer = new Timer(t, new ActionListener() {
+		stimulusTimer = new Timer(t, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				num.setText(s);
+				num.setText("<html>"+probe_feedback[trial_number][0]+"</html>");
 
-				if (information.length() >0){
-					print_line.println(timer + " " + information);
-					print_line.flush();
-				}
+
+				long endTime   = System.currentTimeMillis();
+				long totalTime = endTime - startTime;
+				print_line.println(totalTime + " " + "PROBE = "+probe_feedback[trial_number][0]);
+
 
 
 				addKeyListener(respond_to_probe);
@@ -362,7 +358,7 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 					public void actionPerformed(ActionEvent arg0) {
 						if (key == false){
 							stimulusAtTime(0,"","");
-							stimulusAtTime_feedback(100,"<html>"+probe_feedback[trial_number][1]+"</html>","Feed Back = "+probe_feedback[trial_number][1]);
+							stimulusAtTime_feedback(100);
 						}
 
 					}
@@ -376,17 +372,18 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 
 	}
 
-	public void stimulusAtTime_feedback(int t,final String s, final String information){
+	public void stimulusAtTime_feedback(int t){
 
 		removeKeyListener(respond_to_probe);
-		Timer stimulusTimer = new Timer(t, new ActionListener() {
+		stimulusTimer = new Timer(t, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				num.setText(s);
-				if (information.length() >0){
-					print_line.println(timer + " " + information);
-					print_line.flush();
-				}
+				num.setText("<html>"+probe_feedback[trial_number][1]+"</html>");
+
+				long endTime   = System.currentTimeMillis();
+				long totalTime = endTime - startTime;
+				print_line.println(totalTime + " " + "Feed Back = "+probe_feedback[trial_number][1]);
+
 				distractorAtTime(2000);
 			}
 		});
@@ -397,18 +394,18 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 
 	// the distractor : 1-Back task for 10 sec and it will update the timing (time)
 	public void distractorAtTime(int t) {
-		Collections.shuffle(n_Back);
+		Collections.shuffle(N_BACK);
 
 		String stimulus=""; 
 		for (int i = 0; i < 10; i++) {
-			stimulus = n_Back.get(randomInteger(1, 10, random));
+			stimulus = N_BACK.get(randomInteger(1, 10, random));
 			stimulusAtTime(t,stimulus, "N-Back :" + stimulus);
 			stimulusAtTime(t+1000,"","");
 			t+= 1200;
 		} 
 
 		trial_number++; // end of a trial:  adding 1 to the number of trials and going back to the fixation 
-		stimulusAtTime_fixation(t,"<html>"+"*"+"</html>", "Fixation --> *");
+		stimulusAtTime_fixation(t);
 
 	}
 
@@ -417,30 +414,35 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		String r = KeyEvent.getKeyText(e.getKeyCode());
-		if (r.equals("J"))
-			print_line.println(timer + " "+ "*key Pressed* ="+ "1");
-		else if (r.equals("K"))
-			print_line.println(timer + " "+ "*key Pressed* ="+ "2");
-		else if (r.equals("L"))
-			print_line.println(timer + " "+ "*key Pressed* ="+ "3");
-		else if (r.equals(";"))
-			print_line.println(timer + " "+ "*key Pressed* ="+ "4");
-		else if (r.equals('?'))
-			print_line.println(timer + " "+ "*key Pressed* ="+ "foil/1-back");
-		else
-			print_line.println(timer + " "+ "*key Pressed* ="+ KeyEvent.getKeyText(e.getKeyCode()));
-
-		print_line.flush();
-		//System.out.println(timer + " "+ "*key Pressed* ="+KeyEvent.getKeyText(e.getKeyCode()));
-
-
+		if (r.equals("J")){
+			long endTime   = System.currentTimeMillis();
+			long totalTime = endTime - startTime;
+			print_line.println(totalTime + " "+ "*key Pressed* ="+ "1");}
+		else if (r.equals("K")){
+			long endTime   = System.currentTimeMillis();
+			long totalTime = endTime - startTime;
+			print_line.println(totalTime + " "+ "*key Pressed* ="+ "2");}
+		else if (r.equals("L")){
+			long endTime   = System.currentTimeMillis();
+			long totalTime = endTime - startTime;
+			print_line.println(totalTime + " "+ "*key Pressed* ="+ "3");}
+		else if (r.equals(";")){
+			long endTime   = System.currentTimeMillis();
+			long totalTime = endTime - startTime;
+			print_line.println(totalTime + " "+ "*key Pressed* ="+ "4");}
+		else if (r.equals('?')){
+			long endTime   = System.currentTimeMillis();
+			long totalTime = endTime - startTime;
+			print_line.println(totalTime + " "+ "*key Pressed* ="+ "foil/1-back");}
+		else{
+			long endTime   = System.currentTimeMillis();
+			long totalTime = endTime - startTime;
+			print_line.println(totalTime + " "+ "*key Pressed* ="+ KeyEvent.getKeyText(e.getKeyCode()));}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		//print_line.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode())+"--time="+ timer);
-		//print_line.flush();
-
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
+			print_line.flush();
 			System.exit(0);
 		}
 	}
@@ -462,13 +464,11 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 		return randomNumber;
 	}
 
-
-
-
 	public static void main(String args[]) {
 		Paired_Block2 environment = new Paired_Block2();
 		environment.setExtendedState(Frame.MAXIMIZED_BOTH);
 		environment.setBackground(Color.BLACK);
+
 	}
 
 
