@@ -8,8 +8,6 @@ from = 1;
 to = find((round(t)==554));
 
 %size(t(from:to))
-
-
 fs = 2;
 filttype = 3; filtlen = 12; fcut = 0.14;
 
