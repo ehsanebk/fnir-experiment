@@ -273,7 +273,7 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 				if (information.length() >0){
 					long endTime   = System.currentTimeMillis();
 					long totalTime = endTime - startTime;
-					print_line.println(totalTime + " " + information);
+					print_line.println(totalTime + "\t" + information);
 				}
 			}
 		});
@@ -296,7 +296,7 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 					// writing to file:
 					long endTime   = System.currentTimeMillis();
 					long totalTime = endTime - startTime;
-					print_line.println(totalTime + " " + "Fixation "+ info[trial_number]);
+					print_line.println(totalTime + "\t" + "Fixation "+ info[trial_number]);
 
 					stimulusAtTime_study(2000);
 				}
@@ -316,7 +316,7 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 				// writing to file:
 				long endTime   = System.currentTimeMillis();
 				long totalTime = endTime - startTime;
-				print_line.println(totalTime + " " + "Study --> " +study[trial_number][0]+"-" +study[trial_number][1]);
+				print_line.println(totalTime + "\t" + "Study --> " +study[trial_number][0]+"-" +study[trial_number][1]);
 
 
 				stimulusAtTime_warning(6000);
@@ -336,7 +336,7 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 
 				long endTime   = System.currentTimeMillis();
 				long totalTime = endTime - startTime;
-				print_line.println(totalTime + " " + "Warning --> +");
+				print_line.println(totalTime + "\t" + "Warning --> +");
 
 				stimulusAtTime_probe(TIME_BETWEEN_STUDY_AND_PROBE);
 			}
@@ -357,7 +357,7 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 
 				long endTime   = System.currentTimeMillis();
 				long totalTime = endTime - startTime;
-				print_line.println(totalTime + " " + "PROBE = "+probe_feedback[trial_number][0]);
+				print_line.println(totalTime + "\t" + "PROBE = "+probe_feedback[trial_number][0]);
 
 
 
@@ -392,7 +392,7 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 
 				long endTime   = System.currentTimeMillis();
 				long totalTime = endTime - startTime;
-				print_line.println(totalTime + " " + "Feed Back = "+probe_feedback[trial_number][1]);
+				print_line.println(totalTime + "\t" + "Feed Back = "+probe_feedback[trial_number][1]);
 
 				distractorAtTime(2000);
 			}
@@ -427,27 +427,27 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 		if (r.equals("J")){
 			long endTime   = System.currentTimeMillis();
 			long totalTime = endTime - startTime;
-			print_line.println(totalTime + " "+ "*key Pressed* ="+ "1");}
+			print_line.println(totalTime + "\t"+ "*key Pressed* ="+ "1");}
 		else if (r.equals("K")){
 			long endTime   = System.currentTimeMillis();
 			long totalTime = endTime - startTime;
-			print_line.println(totalTime + " "+ "*key Pressed* ="+ "2");}
+			print_line.println(totalTime + "\t"+ "*key Pressed* ="+ "2");}
 		else if (r.equals("L")){
 			long endTime   = System.currentTimeMillis();
 			long totalTime = endTime - startTime;
-			print_line.println(totalTime + " "+ "*key Pressed* ="+ "3");}
+			print_line.println(totalTime + "\t"+ "*key Pressed* ="+ "3");}
 		else if (r.equals(";")){
 			long endTime   = System.currentTimeMillis();
 			long totalTime = endTime - startTime;
-			print_line.println(totalTime + " "+ "*key Pressed* ="+ "4");}
+			print_line.println(totalTime + "\t"+ "*key Pressed* ="+ "4");}
 		else if (r.equals('?')){
 			long endTime   = System.currentTimeMillis();
 			long totalTime = endTime - startTime;
-			print_line.println(totalTime + " "+ "*key Pressed* ="+ "foil/1-back");}
+			print_line.println(totalTime + "\t"+ "*key Pressed* ="+ "foil/1-back");}
 		else{
 			long endTime   = System.currentTimeMillis();
 			long totalTime = endTime - startTime;
-			print_line.println(totalTime + " "+ "*key Pressed* ="+ KeyEvent.getKeyText(e.getKeyCode()));}
+			print_line.println(totalTime + "\t"+ "*key Pressed* ="+ KeyEvent.getKeyText(e.getKeyCode()));}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
