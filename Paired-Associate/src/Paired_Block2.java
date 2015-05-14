@@ -9,7 +9,9 @@
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -27,16 +29,16 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 	Random random;
 	KeyListener respond_to_probe;
 
-	
 	boolean key;
 	int trial_number;
 	Timer stimulusTimer;
 	long startTime;
 
-	// writing to a file for each participant
-	String FILE_NAME = "./Paired_Block2_take1.txt";
-	static final int TIME_BETWEEN_STUDY_AND_PROBE  = 2000;  
-	
+	// constant variables
+	String FILE_NAME = "./Paired_Block2_take2.txt";  // writing to a file for each participant
+	static final int TIME_BETWEEN_STUDY_AND_PROBE  = 6000;  
+	static final int NUMBER_OF_N_BACK_STIMULI = 8;
+
 	boolean append_to_file  = false;
 	FileWriter write; 
 	PrintWriter print_line; 
@@ -71,7 +73,7 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 			{"hair" , "3"},		//  **TRIAL 23**
 			{"love" , "1"},		//  **TRIAL 24**
 			{"tree" , "2"},		//  **TRIAL 25**
-	 		{"fire" , "2"},		//  **TRIAL 26**
+			{"fire" , "2"},		//  **TRIAL 26**
 			{"size" , "2"},		//  **TRIAL 27**
 			{"rest" , "3"},		//  **TRIAL 28**
 			{"list" , "3"},		//  **TRIAL 29**
@@ -119,7 +121,7 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 			{"rest" , "3"},	   //  **TRIAL 28** study:term-3 probe:term feedback:3 (0 trial delay)
 			{"hair" , "3"},	   //  **TRIAL 29** study:city-3 probe:road feedback:2 (6 trial delay)
 			{"list" , "3"}};    //  **TRIAL 30** study:need-1 probe:city feedback:3 (1 trial delay)
-	
+
 	String [] info ={
 			"**TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)" ,
 			"**TRIAL  2** study:year-1 probe:kind feedback:3 (foil)",
@@ -397,7 +399,7 @@ public class Paired_Block2 extends JFrame implements KeyListener{
 		Collections.shuffle(N_BACK);
 
 		String stimulus=""; 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < NUMBER_OF_N_BACK_STIMULI; i++) {
 			stimulus = N_BACK.get(randomInteger(1, 10, random));
 			stimulusAtTime(t,stimulus, "N-Back :" + stimulus);
 			stimulusAtTime(t+1000,"","");

@@ -1,26 +1,4 @@
-1072 Fixation --> * **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
-3085 Study --> time-1
-9093 Warning --> +
-11100 PROBE = time
-11938 *key Pressed* =1
-12156 Feed Back = 1
-14157 N-Back :PEN
-15358 N-Back :CAT
-15985 *key Pressed* =?
-16557 N-Back :MAN
-17465 *key Pressed* =?
-17757 N-Back :ANT
-18957 N-Back :PEN
-20157 N-Back :ZOO
-21357 N-Back :GUN
-22557 N-Back :ANT
-23758 N-Back :FAT
-24958 N-Back :FAT
-25913 *key Pressed* =?
-26162 Fixation --> * **TRIAL  2** study:year-1 probe:kind feedback:foil (foil)
-28174 Study --> year-1
-34179 Warning --> +
-36183 PROBE = kind
-37033 *key Pressed* =1
-37290 Feed Back = foil
-38858 *key Pressed* =?
+1065	Fixation **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+3076	Study --> time-1
+9083	Warning --> +
+14678	*key Pressed* =?

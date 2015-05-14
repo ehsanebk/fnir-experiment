@@ -35,16 +35,16 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 	JPanel buttonPanel;
 	Random random;
 	KeyListener respond_to_probe;
-
 	
 	boolean key;
 	int trial_number;
 	Timer stimulusTimer;
 	long startTime;
-
-	// writing to a file for each participant
-	String FILE_NAME = "./Paired_Block1_take1.txt";
-	static final int TIME_BETWEEN_STUDY_AND_PROBE  = 2000;  
+	
+	// constant variables
+	String FILE_NAME = "./Paired_Block1_take2.txt";  // writing to a file for each participant
+	static final int TIME_BETWEEN_STUDY_AND_PROBE  = 6000;  
+	static final int NUMBER_OF_N_BACK_STIMULI = 8;
 	
 	boolean append_to_file  = false;
 	FileWriter write; 
@@ -407,7 +407,7 @@ public class Paired_Block1 extends JFrame implements KeyListener{
 		Collections.shuffle(N_BACK);
 
 		String stimulus=""; 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < NUMBER_OF_N_BACK_STIMULI; i++) {
 			stimulus = N_BACK.get(randomInteger(1, 10, random));
 			stimulusAtTime(t,stimulus, "N-Back :" + stimulus);
 			stimulusAtTime(t+1000,"","");
