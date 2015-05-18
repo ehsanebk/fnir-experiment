@@ -21,7 +21,7 @@ data_lp=lpf(data(:,12),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,14),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
-title('deoxy 12 14');
+title('block2-1 deoxy 12 14');
 legend('Channel 12','Channel 14');
 % putting lines for the times that the probe is happening
 line([15086 15086] , [-0.6 0.6]);line([42214 42214] , [-0.6 0.6]);
@@ -49,7 +49,7 @@ data_lp=lpf(data(:,11),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,13),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
-title('deoxy 11 13');
+title('block2-1 deoxy 11 13');
 legend('Channel 11','Channel 13');
 % putting lines for the times that the probe is happening
 line([15086 15086] , [-0.6 0.6]);line([42214 42214] , [-0.6 0.6]);
@@ -77,7 +77,7 @@ data_lp=lpf(data(:,10),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,17),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
-title('deoxy 10 17');
+title('block2-1 deoxy 10 17');
 legend('Channel 10','Channel 17');
 % putting lines for the times that the probe is happening
 line([15086 15086] , [-0.6 0.6]);line([42214 42214] , [-0.6 0.6]);
@@ -105,7 +105,7 @@ data_lp=lpf(data(:,9),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,16),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
-title('deoxy 9 16');
+title('block2-1 deoxy 9 16');
 legend('Channel 9','Channel 16');
 % putting lines for the times that the probe is happening
 line([15086 15086] , [-0.6 0.6]);line([42214 42214] , [-0.6 0.6]);
@@ -133,7 +133,7 @@ data_lp=lpf(data(:,8),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,15),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
-title('deoxy 8 15');
+title('block2-1 deoxy 8 15');
 legend('Channel 8','Channel 15');
 % putting lines for the times that the probe is happening
 line([15086 15086] , [-0.6 0.6]);line([42214 42214] , [-0.6 0.6]);
@@ -164,7 +164,7 @@ data_lp=lpf(data(:,18),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,19),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
-title('deoxy 6 7 18 19');
+title('block2-1 deoxy 6 7 18 19');
 legend('Channel 6','Channel 7', 'Channel 18','Channel 19');
 % putting lines for the times that the probe is happening
 line([15086 15086] , [-0.6 0.6]);line([42214 42214] , [-0.6 0.6]);
@@ -196,7 +196,7 @@ data_lp=lpf(data(:,22),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,24),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
-title('deoxy 2 5 22 24');
+title('block2-1 deoxy 2 5 22 24');
 legend('Channel 2','Channel 5','Channel 22','Channel 24');
 % putting lines for the times that the probe is happening
 line([15086 15086] , [-0.6 0.6]);line([42214 42214] , [-0.6 0.6]);
@@ -233,7 +233,7 @@ plot(t(from:to),data_lp(from:to))
 data_lp=lpf(data(:,23),filttype,fs,fcut,filtlen);
 plot(t(from:to),data_lp(from:to))
 
-title('deoxy 1 3 4 20 21 23');
+title('block2-1 deoxy 1 3 4 20 21 23');
 legend('Channel 1','Channel 3', 'Channel 4','Channel 20','Channel 21','Channel 23');
 
 % putting lines for the times that the probe is happening
