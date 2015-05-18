@@ -1,0 +1,4 @@
+1065	Fixation **TRIAL  1** study:time-1 probe:time feedback:1 (0 trial delay)
+3076	Study --> time-1
+9083	Warning --> +
+14678	*key Pressed* =?
