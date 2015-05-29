@@ -13,6 +13,78 @@ to = size(t);
 fs = 2;
 filttype = 3; filtlen = 12; fcut = 0.14;
 
+% Ploting the average during the periods for channel 12 and 14 which has
+% the most fluctuation in the range of the session 8 to 30
+figure
+hold on
+
+average_matrix12 = zeros(1, 101);
+average_matrix14 = zeros(1, 101);
+
+data_lp12=lpf(data(:,12),filttype,fs,fcut,filtlen);
+data_lp14=lpf(data(:,14),filttype,fs,fcut,filtlen);
+
+average_matrix12(1,:)= data_lp12(1832: 1832+100); %     1832 Trial 6
+average_matrix12(end+1,:)= data_lp12(2104: 2104+100); % 2104 Trial 7
+average_matrix12(end+1,:)= data_lp12(2404: 2404+100); % 2404 Trial 8
+average_matrix12(end+1,:)= data_lp12(2683: 2683+100); % 2683 Trial 9
+average_matrix12(end+1,:)= data_lp12(2969: 2969+100); % 2969 Trial 10
+average_matrix12(end+1,:)= data_lp12(3251: 3251+100); % 3251 Trial 12
+average_matrix12(end+1,:)= data_lp12(3529: 3529+100); % 3529 Trial 13
+average_matrix12(end+1,:)= data_lp12(3816: 3816+100); % 3816 Trial 14
+average_matrix12(end+1,:)= data_lp12(4114: 4114+100); % 4114 Trial 15
+average_matrix12(end+1,:)= data_lp12(4385: 4385+100); % 4385 Trial 16
+average_matrix12(end+1,:)= data_lp12(4661: 4661+100); % 4661 Trial 17
+average_matrix12(end+1,:)= data_lp12(4944: 4944+100); % 4944 Trial 18
+average_matrix12(end+1,:)= data_lp12(5220: 5220+100); % 5220 Trial 19
+average_matrix12(end+1,:)= data_lp12(5513: 5513+100); % 5513 Trial 20
+average_matrix12(end+1,:)= data_lp12(5797: 5797+100); % 5797 Trial 21
+average_matrix12(end+1,:)= data_lp12(6071: 6071+100); % 6071 Trial 22
+average_matrix12(end+1,:)= data_lp12(6354: 6354+100); % 6354 Trial 23
+average_matrix12(end+1,:)= data_lp12(6627: 6627+100); % 6627 Trial 24
+average_matrix12(end+1,:)= data_lp12(6896: 6896+100); % 6896 Trial 25
+average_matrix12(end+1,:)= data_lp12(7190: 7190+100); % 7190 Trial 26
+average_matrix12(end+1,:)= data_lp12(7462: 7462+100); % 7462 Trial 27
+average_matrix12(end+1,:)= data_lp12(7752: 7752+100); % 7752 Trial 28
+average_matrix12(end+1,:)= data_lp12(8027: 8027+100); % 8027 Trial 29
+average_matrix12(end+1,:)= data_lp12(8308: 8308+100); % 8308 Trial 30
+
+
+average_matrix14(1,:)= data_lp14(1832: 1832+100); %     1832 Trial 6
+average_matrix14(end+1,:)= data_lp14(2104: 2104+100); % 2104 Trial 7
+average_matrix14(end+1,:)= data_lp14(2404: 2404+100); % 2404 Trial 8
+average_matrix14(end+1,:)= data_lp14(2683: 2683+100); % 2683 Trial 9
+average_matrix14(end+1,:)= data_lp14(2969: 2969+100); % 2969 Trial 10
+average_matrix14(end+1,:)= data_lp14(3251: 3251+100); % 3251 Trial 12
+average_matrix14(end+1,:)= data_lp14(3529: 3529+100); % 3529 Trial 13
+average_matrix14(end+1,:)= data_lp14(3816: 3816+100); % 3816 Trial 14
+average_matrix14(end+1,:)= data_lp14(4114: 4114+100); % 4114 Trial 15
+average_matrix14(end+1,:)= data_lp14(4385: 4385+100); % 4385 Trial 16
+average_matrix14(end+1,:)= data_lp14(4661: 4661+100); % 4661 Trial 17
+average_matrix14(end+1,:)= data_lp14(4944: 4944+100); % 4944 Trial 18
+average_matrix14(end+1,:)= data_lp14(5220: 5220+100); % 5220 Trial 19
+average_matrix14(end+1,:)= data_lp14(5513: 5513+100); % 5513 Trial 20
+average_matrix14(end+1,:)= data_lp14(5797: 5797+100); % 5797 Trial 21
+average_matrix14(end+1,:)= data_lp14(6071: 6071+100); % 6071 Trial 22
+average_matrix14(end+1,:)= data_lp14(6354: 6354+100); % 6354 Trial 23
+average_matrix14(end+1,:)= data_lp14(6627: 6627+100); % 6627 Trial 24
+average_matrix14(end+1,:)= data_lp14(6896: 6896+100); % 6896 Trial 25
+average_matrix14(end+1,:)= data_lp14(7190: 7190+100); % 7190 Trial 26
+average_matrix14(end+1,:)= data_lp14(7462: 7462+100); % 7462 Trial 27
+average_matrix14(end+1,:)= data_lp14(7752: 7752+100); % 7752 Trial 28
+average_matrix14(end+1,:)= data_lp14(8027: 8027+100); % 8027 Trial 29
+average_matrix14(end+1,:)= data_lp14(8308: 8308+100); % 8308 Trial 30
+
+plot(mean(average_matrix12,1));
+plot(mean(average_matrix14,1));
+
+title('block1-2 Oxy 12 14 Average');
+
+legend('Channel 12','Channel 14');
+
+hold off
+
+
 % Plot for channel 12 14
 figure
 hold on

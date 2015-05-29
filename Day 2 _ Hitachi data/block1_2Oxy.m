@@ -1,4 +1,4 @@
-close all
+%close all
 data=csvread('OxyDataForBlock1_2_matlab.csv');
 % t=round(data(:,1)/1000);
 t= data(:,25);
