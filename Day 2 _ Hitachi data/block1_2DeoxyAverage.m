@@ -13,13 +13,29 @@ to = size(t);
 fs = 2;
 filttype = 3; filtlen = 12; fcut = 0.14;
 
+% The variable below ais the interwal whihc we are taking the avarage. This
+% interval starts from the start og each trial which is the 2 sec fixation
+% for to concentrate on the staudy
+%   Fixation **TRIAL 10** study     2 sec 
+%   Study --> word-3                6 sec
+%   Warning --> +                   6 sec
+%   PROBE = hand        
+%   *key Pressed* =3
+%   Feed Back = 3
+%   N-Back :PEN
+%   N-Back :WAR
+%   N-Back :KEY
+%   N-Back :FUN
+%   N-Back :KEY
+%   N-Back :PEN
+%   N-Back :FUN
+%   N-Back :GUN
+average_interval = 250;
+
 % Ploting the average during the periods for channel 12 and 14 which has
 % the most fluctuation in the range of the session 8 to 30
 figure
 hold on
-
-average_interval = 250;
-
 average_matrix12 = zeros(1, average_interval+1);
 average_matrix14 = zeros(1, average_interval+1);
 
