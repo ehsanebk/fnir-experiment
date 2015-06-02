@@ -1,4 +1,4 @@
-close all
+% close all
 data=csvread('DeoxyDataForBlock2_1_matlab.csv');
 % t=round(data(:,1)/1000);
 t= data(:,25);
